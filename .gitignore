@@ -1,0 +1,16 @@
+node_modules
+.next
+out
+.vercel
+.env*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+Thumbs.db
+
+# Material crudo de la artista: ~134 MB de fotos de cámara y documentos.
+# No hace falta para compilar —las imágenes ya procesadas viven en /public— y
+# clonarlo en cada build de Vercel sería un desperdicio. Se guarda aparte.
+# Los scripts de /scripts lo necesitan si hay que reprocesar las obras.
+/contenido

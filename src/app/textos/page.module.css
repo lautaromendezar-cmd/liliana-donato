@@ -1,0 +1,73 @@
+.cabecera {
+  padding-block: clamp(3rem, 8vh, 6rem) var(--e-l);
+}
+
+.titulo {
+  grid-column: 1 / span 7;
+  font-size: var(--t-l);
+}
+
+.texto {
+  padding-block: var(--e-m) var(--e-xl);
+  row-gap: var(--e-m);
+  align-items: start;
+}
+
+/* Aparato crítico a la izquierda, cuerpo a la derecha en medida corta:
+   respeto tipográfico de revista. */
+.credito {
+  grid-column: 1 / span 3;
+  position: sticky;
+  top: 6.5rem;
+}
+
+.creditoTitulo {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 40;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  line-height: 1.15;
+  margin-bottom: 0.8rem;
+}
+
+.creditoLinea {
+  display: block;
+  color: var(--texto-tenue);
+}
+
+.cuerpo {
+  grid-column: 5 / span 6;
+}
+
+/* La primera línea entra con letra capitular baja, no con dropcap barroca. */
+.cuerpo p {
+  margin-bottom: 1.15em;
+  color: var(--texto-medio);
+  max-width: 62ch;
+}
+
+.cuerpo p:first-child {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 46;
+  font-size: var(--t-cuerpo-l);
+  line-height: 1.52;
+  color: var(--texto);
+}
+
+.pendiente {
+  grid-column: 1 / span 12;
+  border-top: 1px solid var(--linea);
+  padding-top: 1rem;
+  color: var(--texto-tenue);
+  max-width: 56ch;
+}
+
+@media (max-width: 62rem) {
+  .titulo,
+  .credito,
+  .cuerpo {
+    grid-column: 1 / span 12;
+  }
+  .credito {
+    position: static;
+  }
+}

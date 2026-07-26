@@ -1,0 +1,167 @@
+.cabecera {
+  padding-block: clamp(3rem, 8vh, 6rem) var(--e-l);
+  row-gap: var(--e-m);
+}
+
+.titulo {
+  grid-column: 1 / span 7;
+  font-size: var(--t-l);
+}
+
+.entrada {
+  grid-column: 8 / span 5;
+  color: var(--texto-medio);
+  font-size: var(--t-cuerpo-l);
+  line-height: 1.55;
+  align-self: end;
+}
+
+.corte {
+  padding-block: var(--e-l) var(--e-m);
+  scroll-margin-top: 5rem;
+}
+
+.corteInterior {
+  align-items: baseline;
+  border-bottom: 1px solid var(--linea);
+  padding-bottom: 0.9rem;
+}
+
+.corteRotulo {
+  grid-column: 1 / span 6;
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1;
+}
+
+.corteNota {
+  grid-column: 8 / span 5;
+  color: var(--texto-medio);
+  max-width: 40ch;
+}
+
+/* ------------------------------------------------------------- capítulo */
+
+.capitulo {
+  padding-block: var(--e-l);
+  transition: background-color 900ms var(--curva-aire);
+}
+
+.capituloInterior {
+  row-gap: var(--e-m);
+  align-items: start;
+}
+
+/* Alterna el canal de la obra para que el índice tenga ritmo de pliego. */
+.imagenIzquierda {
+  grid-column: 1 / span 7;
+}
+
+.imagenDerecha {
+  grid-column: 6 / span 7;
+}
+
+.textoDerecha {
+  grid-column: 9 / span 4;
+  padding-top: clamp(0rem, 4vw, 3.5rem);
+}
+
+.textoIzquierda {
+  grid-column: 1 / span 4;
+  padding-top: clamp(0rem, 4vw, 3.5rem);
+}
+
+.numero {
+  color: var(--texto-tenue);
+  display: block;
+  margin-bottom: 0.9rem;
+}
+
+.nombreSerie {
+  font-size: var(--t-m);
+  margin-bottom: 0.9rem;
+}
+
+.cuerpo {
+  color: var(--texto-medio);
+  margin-bottom: var(--e-m);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  color: var(--texto-tenue);
+  border-top: 1px solid var(--linea-tenue);
+  padding-top: 0.7rem;
+  margin-bottom: var(--e-s);
+}
+
+.entrar {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  color: var(--texto);
+  border-bottom: 1px solid var(--acento);
+  padding-bottom: 2px;
+  transition: gap 420ms var(--curva-aire);
+}
+
+.entrar:hover,
+.entrar:focus-visible {
+  gap: 0.85rem;
+}
+
+/* -------------------------------------------------------------- atelier */
+
+/* Sin ficha técnica: sólo un respiro. Es lo que hace que el sitio se sienta
+   habitado y no un catálogo. */
+.atelier {
+  padding-block: var(--e-l);
+  transition: background-color 900ms var(--curva-aire);
+}
+
+.atelierSangrado {
+  width: 100%;
+}
+
+.atelierMarco {
+  padding-inline: var(--margen);
+}
+
+.atelierImagen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--proporcion);
+  overflow: hidden;
+}
+
+.atelierImagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.atelierPie {
+  padding: 0.8rem var(--margen) 0;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--e-s);
+  color: var(--texto-tenue);
+}
+
+@media (max-width: 62rem) {
+  .titulo,
+  .entrada,
+  .corteRotulo,
+  .corteNota,
+  .imagenIzquierda,
+  .imagenDerecha,
+  .textoDerecha,
+  .textoIzquierda {
+    grid-column: 1 / span 12;
+  }
+  .textoDerecha,
+  .textoIzquierda {
+    padding-top: 0;
+  }
+}

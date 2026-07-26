@@ -1,0 +1,61 @@
+.pie {
+  border-top: 1px solid var(--linea-tenue);
+  margin-top: var(--e-xxl);
+  padding: var(--e-l) var(--margen) var(--e-m);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--e-m);
+}
+
+.sello {
+  width: clamp(56px, 7vw, 78px);
+  height: auto;
+  opacity: 0.9;
+  mix-blend-mode: multiply;
+}
+
+/* En penumbra el multiply no sirve: el sello se aclara y se apaga. */
+:global([data-registro="materia"]) .sello {
+  mix-blend-mode: screen;
+  filter: invert(1) hue-rotate(180deg) saturate(0.4) brightness(1.3);
+  opacity: 0.55;
+}
+
+.centro {
+  text-align: center;
+  color: var(--texto-tenue);
+}
+
+.derecha {
+  text-align: right;
+  color: var(--texto-tenue);
+}
+
+.enlace {
+  color: var(--texto-medio);
+  border-bottom: 1px solid var(--linea);
+  padding-bottom: 1px;
+  transition:
+    color 420ms var(--curva-aire),
+    border-color 420ms var(--curva-aire);
+}
+
+.enlace:hover,
+.enlace:focus-visible {
+  color: var(--texto);
+  border-color: var(--acento);
+}
+
+@media (max-width: 46rem) {
+  .pie {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: var(--e-s);
+  }
+  .derecha,
+  .centro {
+    text-align: center;
+  }
+}

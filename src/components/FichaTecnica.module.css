@@ -1,0 +1,54 @@
+/* El aparato: versalitas serif, cifras tabulares, un filete finísimo.
+   Es la defensa contra el souvenir — botánica con ficha seria, no lámina. */
+
+.ficha {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.linea {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: var(--e-s);
+  padding-block: 0.6rem;
+  border-top: 1px solid var(--linea-tenue);
+  align-items: baseline;
+}
+
+.linea:last-child {
+  border-bottom: 1px solid var(--linea-tenue);
+}
+
+.clave {
+  color: var(--texto-tenue);
+  margin: 0;
+}
+
+.valor {
+  margin: 0;
+  font-family: var(--display);
+  font-variation-settings: "opsz" 20;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--texto);
+}
+
+.pendiente {
+  color: var(--texto-tenue);
+  font-style: italic;
+}
+
+.nota {
+  margin-top: var(--e-s);
+  color: var(--texto-medio);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  max-width: 42ch;
+}
+
+@media (max-width: 40rem) {
+  .linea {
+    grid-template-columns: 6.5rem 1fr;
+  }
+}

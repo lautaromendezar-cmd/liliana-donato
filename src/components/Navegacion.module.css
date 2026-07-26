@@ -1,0 +1,126 @@
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--e-m);
+  padding: 1.15rem var(--margen) 1rem;
+  background: color-mix(in srgb, var(--fondo) 86%, transparent);
+  backdrop-filter: blur(14px) saturate(1.1);
+  border-bottom: 1px solid var(--linea-tenue);
+  transition:
+    background-color 900ms var(--curva-aire),
+    border-color 900ms var(--curva-aire);
+}
+
+.marca {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  color: var(--texto);
+  white-space: nowrap;
+}
+
+.nombre {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 16;
+  font-weight: 500;
+  font-size: var(--t-versal);
+  letter-spacing: var(--tracking-versal-ancho);
+  text-transform: uppercase;
+}
+
+.punto {
+  color: var(--filete);
+  font-size: 0.7rem;
+}
+
+.oficio {
+  color: var(--texto-tenue);
+}
+
+.menu {
+  display: flex;
+  gap: clamp(1rem, 2.4vw, 2.4rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.enlace {
+  position: relative;
+  color: var(--texto-medio);
+  padding-block: 0.2rem;
+  transition: color 420ms var(--curva-aire);
+}
+
+.enlace::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--acento);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 520ms var(--curva-aire);
+}
+
+.enlace:hover,
+.enlace:focus-visible {
+  color: var(--texto);
+}
+
+.enlace:hover::after,
+.enlace:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.activo {
+  color: var(--texto);
+}
+
+.activo::after {
+  transform: scaleX(1);
+  background: var(--filete);
+}
+
+/* En pantallas chicas el sello tipográfico se aprieta y el menú baja de
+   cuerpo: la barra tiene que entrar entera en 320px sin partirse ni empujar
+   el documento a lo ancho. */
+@media (max-width: 46rem) {
+  .oficio,
+  .punto {
+    display: none;
+  }
+  .barra {
+    gap: var(--e-s);
+    padding-block: 0.9rem 0.8rem;
+  }
+  .marca {
+    min-width: 0;
+  }
+  .nombre {
+    font-size: 0.625rem;
+    letter-spacing: 0.14em;
+  }
+  .menu {
+    gap: 0.9rem;
+  }
+  .enlace {
+    font-size: 0.625rem;
+    letter-spacing: 0.09em;
+  }
+}
+
+@media (max-width: 22rem) {
+  .nombre {
+    letter-spacing: 0.08em;
+  }
+  .menu {
+    gap: 0.7rem;
+  }
+}

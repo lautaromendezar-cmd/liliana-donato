@@ -1,0 +1,58 @@
+/* El revelado principal: una máscara de borde orgánico que barre el elemento,
+   como un lavado que gana el papel. Nunca un fade, nunca un clip rectangular.
+
+   Progressive enhancement: por defecto no hay máscara ninguna. Sólo cuando el
+   cliente confirma que va a animar (`.armado`) se aplica, de modo que sin JS
+   —o con movimiento reducido— la obra se ve entera desde el primer cuadro. */
+
+@property --frente {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+.armado {
+  /* Máscara al derecho: opaca a la izquierda. 100% oculta, 0% revela. */
+  --mascara: var(--lavado);
+  --frente: 100%;
+  -webkit-mask-image: var(--mascara);
+  mask-image: var(--mascara);
+  -webkit-mask-size: 300% 100%;
+  mask-size: 300% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: var(--frente) 0;
+  mask-position: var(--frente) 0;
+  transition: --frente var(--dur, var(--dur-aire)) var(--curva, var(--curva-aire))
+    var(--retardo, 0ms);
+  will-change: mask-position;
+}
+
+/* Materia: el frente entra pesado y frena en seco. */
+.materia {
+  --dur: var(--dur-materia);
+  --curva: var(--curva-materia);
+}
+
+/* Máscara espejada: opaca a la derecha, así que los extremos se invierten. */
+.armado.invertido {
+  --mascara: var(--lavado-inv);
+  --frente: 0%;
+}
+
+.armado.revelado {
+  --frente: 0%;
+}
+
+.armado.invertido.revelado {
+  --frente: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .armado {
+    -webkit-mask-image: none;
+    mask-image: none;
+    transition: none;
+    will-change: auto;
+  }
+}

@@ -1,0 +1,152 @@
+.cabecera {
+  padding-block: clamp(3rem, 8vh, 6rem) var(--e-l);
+  row-gap: var(--e-l);
+  align-items: start;
+}
+
+.titulo {
+  grid-column: 1 / span 5;
+  font-size: var(--t-l);
+}
+
+.retrato {
+  grid-column: 7 / span 6;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.retrato img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.retratoPie {
+  margin-top: 0.7rem;
+  color: var(--texto-tenue);
+  border-top: 1px solid var(--linea-tenue);
+  padding-top: 0.5rem;
+}
+
+.bio {
+  grid-column: 1 / span 5;
+}
+
+.bio p {
+  margin-bottom: 1.1em;
+  color: var(--texto-medio);
+}
+
+.bio p:first-child {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 44;
+  font-size: var(--t-cuerpo-l);
+  line-height: 1.5;
+  color: var(--texto);
+}
+
+/* ------------------------------------------------- línea de tiempo del CV */
+
+.trayectoria {
+  padding-block: var(--e-l) var(--e-xl);
+}
+
+.bloque {
+  grid-column: 1 / span 12;
+  margin-bottom: var(--e-l);
+}
+
+.bloqueCabeza {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--e-s);
+  border-bottom: 1px solid var(--linea);
+  padding-bottom: 0.7rem;
+  margin-bottom: 0.4rem;
+}
+
+.bloqueTitulo {
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-family: var(--display);
+  font-variation-settings: "opsz" 34;
+}
+
+.bloqueCuenta {
+  color: var(--texto-tenue);
+}
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Los años sostienen la columna izquierda: el CV se lee como una línea de
+   tiempo, no como una lista. */
+.fila {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr minmax(0, 14rem);
+  gap: var(--e-s);
+  align-items: baseline;
+  padding-block: 0.85rem;
+  border-bottom: 1px solid var(--linea-tenue);
+}
+
+.anio {
+  color: var(--texto-tenue);
+}
+
+.obraTitulo {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 26;
+  font-size: 1.02rem;
+  line-height: 1.35;
+}
+
+.lugar {
+  color: var(--texto-medio);
+  text-align: right;
+}
+
+.ciudad {
+  color: var(--texto-tenue);
+}
+
+.formacionTexto {
+  color: var(--texto-medio);
+  grid-column: 2 / span 2;
+}
+
+.vacio {
+  color: var(--texto-tenue);
+  font-style: italic;
+  padding-block: 0.9rem;
+}
+
+@media (max-width: 62rem) {
+  .titulo,
+  .retrato,
+  .bio,
+  .bloque {
+    grid-column: 1 / span 12;
+  }
+  .retrato {
+    max-width: 26rem;
+  }
+}
+
+@media (max-width: 46rem) {
+  .fila {
+    grid-template-columns: 4rem 1fr;
+    row-gap: 0.2rem;
+  }
+  .lugar {
+    grid-column: 2;
+    text-align: left;
+  }
+  .formacionTexto {
+    grid-column: 2;
+  }
+}

@@ -1,0 +1,213 @@
+/* ---------------------------------------------------------------- portada */
+
+.portada {
+  padding-block: clamp(3rem, 9vh, 7rem) var(--e-xl);
+  align-items: start;
+  row-gap: var(--e-l);
+}
+
+/* El bloque de texto no se centra nunca: vive en el canal izquierdo. */
+.palabra {
+  grid-column: 1 / span 6;
+  padding-top: clamp(0rem, 6vh, 4.5rem);
+}
+
+.nombre {
+  font-size: var(--t-xl);
+  margin-bottom: clamp(1.2rem, 3vh, 2.2rem);
+}
+
+.nombre span {
+  display: block;
+}
+
+.nombre .apellido {
+  margin-left: 0.09em;
+}
+
+.statement {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 42;
+  font-size: var(--t-cuerpo-l);
+  line-height: 1.45;
+  font-style: italic;
+  color: var(--texto-medio);
+  max-width: 26ch;
+  margin-bottom: var(--e-m);
+}
+
+.pieDePortada {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.1rem;
+  align-items: baseline;
+  color: var(--texto-tenue);
+}
+
+.filete {
+  color: var(--filete);
+}
+
+/* La obra se apoya en la línea óptica alta, no en el centro geométrico. */
+.obraDePortada {
+  grid-column: 8 / span 5;
+}
+
+.creditoPortada {
+  margin-top: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--e-s);
+  color: var(--texto-tenue);
+  border-top: 1px solid var(--linea-tenue);
+  padding-top: 0.55rem;
+}
+
+/* ------------------------------------------------------------ los registros */
+
+.tesis {
+  padding-block: var(--e-xl);
+  transition: background-color 900ms var(--curva-aire);
+}
+
+.tesisInterior {
+  row-gap: var(--e-l);
+  align-items: center;
+}
+
+.tesisTexto {
+  grid-column: 2 / span 4;
+}
+
+.tesisTextoDerecha {
+  grid-column: 8 / span 4;
+}
+
+.tesisObra {
+  grid-column: 7 / span 6;
+}
+
+.tesisObraIzquierda {
+  grid-column: 1 / span 6;
+}
+
+.rotulo {
+  color: var(--texto-tenue);
+  display: block;
+  margin-bottom: 1.1rem;
+}
+
+.tesisTitulo {
+  font-size: var(--t-l);
+  margin-bottom: var(--e-s);
+}
+
+.tesisCuerpo {
+  color: var(--texto-medio);
+  max-width: 34ch;
+  margin-bottom: var(--e-m);
+}
+
+/* ------------------------------------------------------------------ índice */
+
+.indice {
+  padding-block: var(--e-xl);
+}
+
+.indiceCabeza {
+  grid-column: 1 / span 12;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--e-m);
+  border-bottom: 1px solid var(--linea);
+  padding-bottom: 0.8rem;
+  margin-bottom: var(--e-m);
+}
+
+.indiceLista {
+  grid-column: 1 / span 12;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.indiceFila {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto auto;
+  gap: var(--e-s);
+  align-items: baseline;
+  padding-block: 0.95rem;
+  border-bottom: 1px solid var(--linea-tenue);
+  transition: color 420ms var(--curva-aire);
+}
+
+.indiceFila:hover,
+.indiceFila:focus-visible {
+  color: var(--texto);
+}
+
+.indiceNumero {
+  color: var(--texto-tenue);
+}
+
+.indiceTitulo {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 40;
+  font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+  line-height: 1.15;
+}
+
+.indiceRegistro,
+.indiceCantidad {
+  color: var(--texto-tenue);
+}
+
+.verTodo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  color: var(--texto-medio);
+  margin-top: var(--e-m);
+  grid-column: 1 / span 12;
+}
+
+.verTodo:hover {
+  color: var(--texto);
+}
+
+/* ---------------------------------------------------------------- responsive */
+
+@media (max-width: 62rem) {
+  .palabra,
+  .obraDePortada,
+  .tesisTexto,
+  .tesisTextoDerecha,
+  .tesisObra,
+  .tesisObraIzquierda {
+    grid-column: 1 / span 12;
+  }
+  .obraDePortada {
+    max-width: 32rem;
+  }
+  .palabra {
+    padding-top: 0;
+  }
+  .tesisObra,
+  .tesisObraIzquierda {
+    order: -1;
+  }
+}
+
+@media (max-width: 40rem) {
+  .indiceFila {
+    grid-template-columns: 2.4rem 1fr;
+    row-gap: 0.3rem;
+  }
+  .indiceRegistro {
+    grid-column: 2;
+  }
+  .indiceCantidad {
+    display: none;
+  }
+}

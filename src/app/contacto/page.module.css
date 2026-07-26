@@ -1,0 +1,87 @@
+.pagina {
+  padding-block: clamp(4rem, 14vh, 10rem) var(--e-xl);
+  row-gap: var(--e-l);
+  align-items: start;
+  min-height: 62vh;
+}
+
+.titulo {
+  grid-column: 1 / span 5;
+  font-size: var(--t-l);
+}
+
+.entrada {
+  grid-column: 1 / span 5;
+  color: var(--texto-medio);
+  font-size: var(--t-cuerpo-l);
+  line-height: 1.5;
+  max-width: 28ch;
+  font-family: var(--display);
+  font-variation-settings: "opsz" 44;
+}
+
+.datos {
+  grid-column: 8 / span 4;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dato {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: var(--e-s);
+  align-items: baseline;
+  padding-block: 0.9rem;
+  border-top: 1px solid var(--linea-tenue);
+}
+
+.dato:last-child {
+  border-bottom: 1px solid var(--linea-tenue);
+}
+
+.clave {
+  color: var(--texto-tenue);
+}
+
+.valor {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24;
+  font-size: 0.98rem;
+}
+
+.valor a {
+  border-bottom: 1px solid var(--linea);
+  padding-bottom: 2px;
+  transition:
+    color 420ms var(--curva-aire),
+    border-color 420ms var(--curva-aire);
+}
+
+.valor a:hover,
+.valor a:focus-visible {
+  color: var(--acento);
+  border-color: var(--acento);
+}
+
+.pendiente {
+  color: var(--texto-tenue);
+  font-style: italic;
+}
+
+.nota {
+  grid-column: 8 / span 4;
+  color: var(--texto-medio);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin-top: var(--e-s);
+}
+
+@media (max-width: 62rem) {
+  .titulo,
+  .entrada,
+  .datos,
+  .nota {
+    grid-column: 1 / span 12;
+  }
+}

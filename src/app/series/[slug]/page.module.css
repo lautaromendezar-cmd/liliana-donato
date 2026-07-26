@@ -1,0 +1,206 @@
+.pagina {
+  transition:
+    background-color 900ms var(--curva-aire),
+    color 900ms var(--curva-aire);
+}
+
+/* ------------------------------------------------------------- cabecera */
+
+.cabecera {
+  padding-block: clamp(3rem, 8vh, 6rem) var(--e-l);
+  row-gap: var(--e-m);
+  align-items: end;
+}
+
+.migas {
+  grid-column: 1 / span 12;
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  color: var(--texto-tenue);
+  margin-bottom: var(--e-m);
+}
+
+.migas a:hover {
+  color: var(--texto);
+}
+
+.titulo {
+  grid-column: 1 / span 7;
+  font-size: var(--t-l);
+}
+
+.introduccion {
+  grid-column: 8 / span 5;
+  color: var(--texto-medio);
+  font-size: var(--t-cuerpo-l);
+  line-height: 1.6;
+}
+
+.datos {
+  grid-column: 1 / span 12;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  color: var(--texto-tenue);
+  border-top: 1px solid var(--linea);
+  padding-top: 0.75rem;
+  margin-top: var(--e-m);
+}
+
+/* ------------------------------------------------- recorrido en columna */
+
+.recorrido {
+  padding-bottom: var(--e-l);
+}
+
+.pieza {
+  padding-block: var(--e-l);
+  transition: background-color 900ms var(--curva-aire);
+}
+
+.piezaInterior {
+  row-gap: var(--e-s);
+  align-items: start;
+}
+
+/* Tres anchos distintos según la proporción: el layout no asume rectángulos. */
+.anchoAlta {
+  grid-column: 3 / span 6;
+}
+
+.anchoCuadrada {
+  grid-column: 2 / span 7;
+}
+
+.anchoApaisada {
+  grid-column: 1 / span 9;
+}
+
+.desplazada {
+  grid-column-start: 4;
+}
+
+.pieDePieza {
+  grid-column: 11 / span 2;
+  align-self: end;
+  padding-bottom: 0.4rem;
+}
+
+.piezaTitulo {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 30;
+  font-size: 1.15rem;
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+
+.piezaMeta {
+  color: var(--texto-tenue);
+  display: block;
+}
+
+.piezaEnlace {
+  display: block;
+}
+
+/* ---------------------------------------------------- tira horizontal */
+
+.tira {
+  padding-bottom: var(--e-l);
+}
+
+.tiraAviso {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--e-s);
+  padding-inline: var(--margen);
+  color: var(--texto-tenue);
+  border-top: 1px solid var(--linea-tenue);
+  padding-top: 0.7rem;
+  margin-bottom: var(--e-m);
+}
+
+.tiraPista {
+  display: flex;
+  gap: var(--canal);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-inline: var(--margen);
+  scroll-padding-inline-start: var(--margen);
+  padding-bottom: var(--e-s);
+  scrollbar-width: thin;
+  scrollbar-color: var(--linea) transparent;
+  overscroll-behavior-x: contain;
+}
+
+.tiraPista::-webkit-scrollbar {
+  height: 2px;
+}
+
+.tiraPista::-webkit-scrollbar-thumb {
+  background: var(--linea);
+}
+
+.tiraPieza {
+  flex: 0 0 clamp(15rem, 32vw, 27rem);
+  scroll-snap-align: start;
+}
+
+.tiraPie {
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--e-s);
+  color: var(--texto-tenue);
+  border-top: 1px solid var(--linea-tenue);
+  padding-top: 0.5rem;
+}
+
+/* ------------------------------------------------------------ pie de serie */
+
+.siguienteSerie {
+  padding-block: var(--e-l) var(--e-m);
+}
+
+.siguienteInterior {
+  grid-column: 1 / span 12;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--e-m);
+  border-top: 1px solid var(--linea);
+  padding-top: 1rem;
+}
+
+.siguienteEnlace {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-family: var(--display);
+  font-variation-settings: "opsz" 36;
+  font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+  transition: gap 420ms var(--curva-aire);
+}
+
+.siguienteEnlace:hover {
+  gap: 1rem;
+}
+
+@media (max-width: 62rem) {
+  .titulo,
+  .introduccion,
+  .anchoAlta,
+  .anchoCuadrada,
+  .anchoApaisada,
+  .pieDePieza {
+    grid-column: 1 / span 12;
+  }
+  .desplazada {
+    grid-column-start: 1;
+  }
+  .pieDePieza {
+    margin-top: 0.4rem;
+  }
+}
