@@ -1,0 +1,342 @@
+[
+  {
+    "slug": "aire-de-primavera",
+    "seccion": "acuarelas",
+    "ancho": 1043,
+    "alto": 1600,
+    "titulo": "Aire de primavera",
+    "tecnica": "Acuarela",
+    "medidas": "31 x 41 cm",
+    "vendida": true
+  },
+  {
+    "slug": "camino-campestre",
+    "seccion": "acuarelas",
+    "ancho": 1232,
+    "alto": 1600,
+    "titulo": "Camino Campestre",
+    "tecnica": "Acuarela",
+    "medidas": "27 x 37 cm",
+    "vendida": false
+  },
+  {
+    "slug": "campanita-con-colibri",
+    "seccion": "acuarelas",
+    "ancho": 1057,
+    "alto": 1600,
+    "titulo": "Campanita con colibrí",
+    "tecnica": "Acuarela",
+    "medidas": "30 x 40 cm",
+    "vendida": false
+  },
+  {
+    "slug": "cascada",
+    "seccion": "acuarelas",
+    "ancho": 972,
+    "alto": 1600,
+    "titulo": "Cascada",
+    "tecnica": "Acuarela",
+    "medidas": "37 x 55 cm",
+    "vendida": false
+  },
+  {
+    "slug": "calido-frio",
+    "seccion": "acuarelas",
+    "ancho": 1600,
+    "alto": 1200,
+    "titulo": "Cálido Frio",
+    "tecnica": "Acuarela",
+    "medidas": "28 x 4 cm",
+    "vendida": false
+  },
+  {
+    "slug": "entre-grises",
+    "seccion": "acuarelas",
+    "ancho": 1048,
+    "alto": 1600,
+    "titulo": "Entre Grises",
+    "tecnica": "Acuarela",
+    "medidas": "36 x 55 cm",
+    "vendida": false
+  },
+  {
+    "slug": "flores",
+    "seccion": "acuarelas",
+    "ancho": 1600,
+    "alto": 1106,
+    "titulo": "Flores",
+    "tecnica": "Acuarela",
+    "medidas": "50 x 40 cm",
+    "vendida": true
+  },
+  {
+    "slug": "flores-de-atardecer",
+    "seccion": "acuarelas",
+    "ancho": 1260,
+    "alto": 1600,
+    "titulo": "Flores de atardecer",
+    "tecnica": "Acuarela",
+    "medidas": "28 x 34 cm",
+    "vendida": false
+  },
+  {
+    "slug": "flores-palidas",
+    "seccion": "acuarelas",
+    "ancho": 1467,
+    "alto": 1600,
+    "titulo": "Flores pálidas",
+    "tecnica": "Acuarela",
+    "medidas": "28 x 4 cm",
+    "vendida": false
+  },
+  {
+    "slug": "flores-rosas",
+    "seccion": "acuarelas",
+    "ancho": 1600,
+    "alto": 1110,
+    "titulo": "Flores rosas",
+    "tecnica": "Acuarela",
+    "medidas": "45 x 5 cm",
+    "vendida": true
+  },
+  {
+    "slug": "frutos",
+    "seccion": "acuarelas",
+    "ancho": 1600,
+    "alto": 1600,
+    "titulo": "Frutos",
+    "tecnica": "Acuarela en bastidor",
+    "medidas": "30 x 30 cm",
+    "vendida": false
+  },
+  {
+    "slug": "hortensias",
+    "seccion": "acuarelas",
+    "ancho": 1199,
+    "alto": 1600,
+    "titulo": "Hortensias",
+    "tecnica": "Acuarela",
+    "medidas": "30 x 40 cm",
+    "vendida": true
+  },
+  {
+    "slug": "jarron-colorido",
+    "seccion": "acuarelas",
+    "ancho": 1369,
+    "alto": 1600,
+    "titulo": "Jarrón colorido",
+    "tecnica": "Acuarela",
+    "medidas": "28 x 36 cm",
+    "vendida": false
+  },
+  {
+    "slug": "margaritas-celestes",
+    "seccion": "acuarelas",
+    "ancho": 1560,
+    "alto": 1600,
+    "titulo": "Margaritas celestes",
+    "tecnica": "Acuarela",
+    "medidas": null,
+    "vendida": true
+  },
+  {
+    "slug": "nueva-york",
+    "seccion": "acuarelas",
+    "ancho": 1201,
+    "alto": 1600,
+    "titulo": "Nueva York",
+    "tecnica": "Acuarela",
+    "medidas": "20 x 32 cm",
+    "vendida": true
+  },
+  {
+    "slug": "orquideas",
+    "seccion": "acuarelas",
+    "ancho": 1573,
+    "alto": 1600,
+    "titulo": "Orquideas",
+    "tecnica": "Acuarela en bastidor",
+    "medidas": "20 x 20 cm",
+    "vendida": false
+  },
+  {
+    "slug": "primaveral",
+    "seccion": "acuarelas",
+    "ancho": 972,
+    "alto": 1600,
+    "titulo": "Primaveral",
+    "tecnica": "Acuarela",
+    "medidas": "30 x 40 cm",
+    "vendida": true
+  },
+  {
+    "slug": "serenidad",
+    "seccion": "acuarelas",
+    "ancho": 1329,
+    "alto": 1600,
+    "titulo": "Serenidad",
+    "tecnica": "Acuarela",
+    "medidas": "37 x 24,5 cm",
+    "vendida": false
+  },
+  {
+    "slug": "ventana-con-hortensias",
+    "seccion": "acuarelas",
+    "ancho": 1108,
+    "alto": 1600,
+    "titulo": "Ventana con Hortensias",
+    "tecnica": "Acuarela",
+    "medidas": "26,5 x 37,5 cm",
+    "vendida": false
+  },
+  {
+    "slug": "calle-nortena",
+    "seccion": "oleos",
+    "ancho": 1015,
+    "alto": 1600,
+    "titulo": "Calle Norteña",
+    "tecnica": "Óleo",
+    "medidas": null,
+    "vendida": false
+  },
+  {
+    "slug": "el-mirador",
+    "seccion": "oleos",
+    "ancho": 1210,
+    "alto": 1600,
+    "titulo": "El Mirador",
+    "tecnica": "Óleo",
+    "medidas": "24 x 32 cm",
+    "vendida": false
+  },
+  {
+    "slug": "flores-blancas",
+    "seccion": "oleos",
+    "ancho": 1134,
+    "alto": 1600,
+    "titulo": "Flores Blancas",
+    "tecnica": "Óleo",
+    "medidas": "51 x 36 cm",
+    "vendida": true
+  },
+  {
+    "slug": "jarron-con-flores",
+    "seccion": "oleos",
+    "ancho": 1176,
+    "alto": 1600,
+    "titulo": "Jarrón con flores",
+    "tecnica": "Óleo",
+    "medidas": "30 x 40 cm",
+    "vendida": false
+  },
+  {
+    "slug": "los-colorados",
+    "seccion": "oleos",
+    "ancho": 1182,
+    "alto": 1600,
+    "titulo": "Los colorados",
+    "tecnica": "Óleo",
+    "medidas": "28 x 38 cm",
+    "vendida": false
+  },
+  {
+    "slug": "luna-llena",
+    "seccion": "oleos",
+    "ancho": 1087,
+    "alto": 1600,
+    "titulo": "Luna llena",
+    "tecnica": "Óleo",
+    "medidas": "26 x 37 cm",
+    "vendida": false
+  },
+  {
+    "slug": "paisaje-campestre",
+    "seccion": "oleos",
+    "ancho": 1600,
+    "alto": 1269,
+    "titulo": "Paisaje campestre",
+    "tecnica": "Óleo",
+    "medidas": "30 x 25 cm",
+    "vendida": false
+  },
+  {
+    "slug": "ventana-1",
+    "seccion": "oleos",
+    "ancho": 1179,
+    "alto": 1600,
+    "titulo": "Ventana 1",
+    "tecnica": "Óleo y vitraux",
+    "medidas": null,
+    "vendida": false
+  },
+  {
+    "slug": "ventana-2",
+    "seccion": "oleos",
+    "ancho": 1298,
+    "alto": 1600,
+    "titulo": "Ventana 2",
+    "tecnica": "Óleo y vitraux",
+    "medidas": null,
+    "vendida": false
+  },
+  {
+    "slug": "central-park",
+    "seccion": "series",
+    "ancho": 1244,
+    "alto": 1600,
+    "titulo": "Central Park I",
+    "tecnica": "Óleo",
+    "medidas": "30 x 40 cm",
+    "vendida": false
+  },
+  {
+    "slug": "central-park-2",
+    "seccion": "series",
+    "ancho": 632,
+    "alto": 796,
+    "titulo": "Central Park II",
+    "tecnica": "Óleo",
+    "medidas": "30 x 40 cm",
+    "vendida": false
+  },
+  {
+    "slug": "paisaje-urbano",
+    "seccion": "series",
+    "ancho": 1600,
+    "alto": 1577,
+    "titulo": "Paisaje Urbano I",
+    "tecnica": "Óleo",
+    "medidas": "30 x 30 cm",
+    "vendida": false
+  },
+  {
+    "slug": "paisaje-urbano-2",
+    "seccion": "series",
+    "ancho": 1536,
+    "alto": 1600,
+    "titulo": "Paisaje Urbano II",
+    "tecnica": "Óleo",
+    "medidas": "0 x 30 cm",
+    "vendida": false
+  },
+  {
+    "slug": "paisaje-urbano-3",
+    "seccion": "series",
+    "ancho": 1600,
+    "alto": 1520,
+    "titulo": "Paisaje Urbano III",
+    "tecnica": "Óleo",
+    "medidas": "30 x 30 cm",
+    "vendida": false
+  },
+  {
+    "slug": "paisaje-urbano-4",
+    "seccion": "series",
+    "ancho": 1518,
+    "alto": 1600,
+    "titulo": "Paisaje urbano",
+    "tecnica": "Óleo",
+    "medidas": "30 x 30 cm",
+    "vendida": false
+  }
+]

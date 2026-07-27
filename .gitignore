@@ -20,7 +20,8 @@ next-env.d.ts
 /contenido/
 /hero/
 
-# revision del recorte, no se publica
-scripts/contact-sheet.png
+# Material de revision: hojas de contactos, rejillas de encuadre y capturas.
+# Se regeneran corriendo los scripts y pesan mas que el sitio entero.
+scripts/*.png
 scripts/__pycache__/
 scripts/_capturas/

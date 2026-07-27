@@ -21,9 +21,9 @@ export const UBICACION = "Pintora · Buenos Aires, Argentina";
 export const MARCA = "Liliana Donato · Arte";
 
 export const NAVEGACION = [
-  { rotulo: "Series", href: "#series" },
-  { rotulo: "Acuarelas", href: "#acuarelas" },
-  { rotulo: "Óleos", href: "#oleos" },
+  { rotulo: "Series", href: "/series" },
+  { rotulo: "Acuarelas", href: "/acuarelas" },
+  { rotulo: "Óleos", href: "/oleos" },
   { rotulo: "Bio", href: "/bio" },
   { rotulo: "Contacto", href: "/contacto" },
 ] as const;

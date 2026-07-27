@@ -40,7 +40,9 @@
      casi diez. Una escala suave aca dejaria el hero tibio. */
   --tam-nombre: clamp(4rem, 11vw, 10rem);
   --tam-statement: clamp(1.0625rem, 0.72rem + 1.1vw, 1.5rem);
-  --tam-meta: clamp(0.625rem, 0.53rem + 0.24vw, 0.75rem);
+  /* el minimo son 12 px y no menos: por debajo de eso el navegador lo reporta
+     como ilegible, y con caja alta y tracking abierto se lee peor todavia */
+  --tam-meta: clamp(0.75rem, 0.66rem + 0.22vw, 0.8125rem);
 
   --alto-nombre: 0.92;
   --alto-statement: 1.62;
