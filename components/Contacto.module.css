@@ -1,0 +1,141 @@
+.contacto {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  /* --papel ya viene invertido por el tema oscuro del layout */
+  background: var(--papel);
+  padding: clamp(7rem, 16vh, 10rem) var(--margen-borde) clamp(4rem, 10vh, 6rem);
+  isolation: isolate;
+}
+
+.manchas {
+  position: absolute;
+  top: 0;
+  right: -6%;
+  bottom: -6%;
+  left: -6%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.manchasImagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.centro {
+  position: relative;
+  z-index: 1;
+  max-width: 44rem;
+  text-align: center;
+}
+
+.titulo {
+  margin: 0;
+  font-family: var(--familia-display);
+  font-size: clamp(2.5rem, 6.4vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: var(--track-nombre);
+  color: var(--tinta);
+  text-wrap: balance;
+}
+
+.enfasis {
+  font-style: italic;
+}
+
+.invitacion {
+  max-width: 40ch;
+  margin: clamp(1.75rem, 3.4vw, 2.75rem) auto 0;
+  font-family: var(--familia-display);
+  font-size: var(--tam-statement);
+  line-height: var(--alto-statement);
+  color: var(--tinta-suave);
+  text-wrap: pretty;
+}
+
+.firma {
+  margin: clamp(2.5rem, 6vh, 4rem) 0 clamp(1.25rem, 2.5vh, 1.75rem);
+  font-family: var(--familia-meta);
+  font-size: var(--tam-meta);
+  font-weight: 500;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-right: calc(var(--track-meta) * -1);
+}
+
+/*
+  Los canales van como texto, no como pastillas con borde. Una pastilla es un
+  control de interfaz; esto es una direccion, y el sitio entero se sostiene en
+  que la tipografia alcanza.
+*/
+.canales {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.6vh, 1.25rem);
+  align-items: center;
+}
+
+/* dos columnas fijas: si el rotulo y el valor se centran como un bloque, cada
+   fila arranca en un lugar distinto y la lista se ve desprolija */
+.canal {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  text-align: left;
+  transition: color var(--dur-corta) var(--curva);
+  color: var(--tinta-suave);
+}
+
+.canal:hover,
+.canal:focus-visible {
+  color: var(--tinta);
+}
+
+.rotulo {
+  font-family: var(--familia-meta);
+  font-size: var(--tam-meta);
+  font-weight: 500;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  text-align: right;
+  color: var(--tinta-suave);
+}
+
+.valor {
+  font-family: var(--familia-display);
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  line-height: 1.2;
+}
+
+.pie {
+  position: absolute;
+  z-index: 1;
+  left: var(--margen-borde);
+  bottom: clamp(1.5rem, 4vh, 2.5rem);
+  margin: 0;
+  font-family: var(--familia-meta);
+  font-size: var(--tam-meta);
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+@media (max-width: 48rem) {
+  .pie {
+    position: static;
+    margin-top: clamp(3rem, 8vh, 5rem);
+    text-align: center;
+  }
+
+  .contacto {
+    place-items: center;
+  }
+}

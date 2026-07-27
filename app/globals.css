@@ -1,0 +1,73 @@
+@import "./tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body,
+h1,
+p,
+figure,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+html,
+body {
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--familia-meta);
+}
+
+/*
+  Tema oscuro por pagina: la pagina marca su raiz con data-tema="oscuro" y se
+  invierten los MISMOS tokens. Asi la navegacion, que vive en el layout y no
+  tiene forma de saber en que pagina esta, cambia sola. Los valores siguen
+  saliendo del verde de la marca; no es un gris neutro pintado encima.
+*/
+html:has([data-tema="oscuro"]) {
+  --papel: #1e2c20;
+  --papel-denso: #182419;
+  --tinta: #f4efe4;
+  --tinta-suave: #ccd3be;
+  --tinta-tenue: #9aa48c;
+}
+
+body {
+  min-height: 100svh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* el hero ocupa la ventana entera y el follaje sobresale de los bordes */
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 1px solid var(--tinta-suave);
+  outline-offset: 0.5rem;
+}
+
+::selection {
+  background: var(--rosa-lavado);
+  color: var(--tinta);
+}

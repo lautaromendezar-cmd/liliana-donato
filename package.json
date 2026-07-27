@@ -1,0 +1,29 @@
+{
+  "name": "liliana-donato",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "motion": "^12.42.2",
+    "next": "^15.5.22",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "//overrides": "Next 15.5 arrastra postcss y sharp con CVE abiertas. Ambas son dependencias internas suyas, no del proyecto, y no hay release de la linea 15 que las suba.",
+  "overrides": {
+    "postcss": "^8.5.23",
+    "sharp": "^0.35.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^5.9.3"
+  }
+}

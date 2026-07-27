@@ -1,0 +1,330 @@
+.bio {
+  position: relative;
+  background: var(--papel);
+}
+
+/* --- la frase que se achica ---------------------------------------------- */
+
+/*
+  La pista mide el doble que la ventana: la frase queda fija durante los
+  100svh que sobran, y ese recorrido es el que la encoge. Cuando la pista
+  termina, la frase se despega y el cuerpo entra debajo.
+*/
+.pista {
+  position: relative;
+  height: 200svh;
+}
+
+.fijo {
+  position: sticky;
+  top: 0;
+  display: grid;
+  place-items: center;
+  height: 100svh;
+  padding: 0 var(--margen-borde);
+}
+
+/*
+  Aguadas de fondo. Sacan al papel del crema plano sin competir con la frase:
+  van muy diluidas y detras. Se desbordan de la caja para que el borde de la
+  imagen nunca coincida con el borde de la pantalla.
+*/
+.manchas {
+  position: absolute;
+  top: 0;
+  right: -8%;
+  bottom: -14%;
+  left: -8%;
+  z-index: 0;
+  opacity: 0.62;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/*
+  Entrada de las aguadas: entran un poco mas grandes y se asientan. Se lee
+  como pigmento que termina de absorberse en el papel, no como una imagen que
+  aparece.
+*/
+.manchasEntrada {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.07);
+  animation: asentarse 1600ms var(--curva) 120ms both;
+}
+
+@keyframes asentarse {
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.manchasImagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frase {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: 15ch;
+  font-family: var(--familia-display);
+  font-size: clamp(2.75rem, 7.6vw, 7.5rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: var(--track-nombre);
+  text-align: center;
+  text-wrap: balance;
+  color: var(--tinta);
+  transform-origin: 50% 50%;
+  will-change: transform;
+
+  /*
+    Mismo revelado por mascara que el nombre del hero: es el recurso del
+    sistema para el display, y repetirlo es lo que hace que las dos paginas se
+    sientan del mismo sitio. Anima mask-position, no una variable registrada,
+    asi que si el navegador no soporta mascaras la frase simplemente se ve.
+    Y como no toca transform, no se pelea con el scrub del scroll.
+  */
+  -webkit-mask-image: linear-gradient(
+    96deg,
+    transparent 0%,
+    transparent 38%,
+    #000 62%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    96deg,
+    transparent 0%,
+    transparent 38%,
+    #000 62%,
+    #000 100%
+  );
+  -webkit-mask-size: 260% 100%;
+  mask-size: 260% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 0% 0;
+  mask-position: 0% 0;
+  animation: revelar var(--dur-revelado) var(--curva-suave) 380ms both;
+}
+
+@keyframes revelar {
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+
+/* --- cuerpo -------------------------------------------------------------- */
+
+/*
+  Sube para solaparse con el final de la pista. Cuando la frase se despega,
+  la caja fija todavia ocupa una pantalla entera y la frase, ya chica, esta
+  arriba de todo: sin este tiron quedaria media ventana de papel en blanco
+  antes de que empiece la bio.
+*/
+.cuerpo {
+  position: relative;
+  max-width: 76rem;
+  margin: -46svh auto 0;
+  padding: 0 var(--margen-borde) clamp(6rem, 14vh, 12rem);
+}
+
+.foto {
+  width: 100%;
+  height: auto;
+}
+
+/*
+  Columnas de distinto ancho y alineadas al pie: la foto arranca arriba y el
+  texto se apoya contra su base, asi que la mitad superior izquierda queda
+  vacia. Ese desbalance es lo que separa una pagina de una lamina.
+*/
+.apertura {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  column-gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+  padding-top: clamp(2rem, 6vh, 5rem);
+}
+
+.retrato {
+  grid-column: 2;
+}
+
+.presentacion {
+  grid-column: 1;
+  padding-bottom: clamp(0.5rem, 3vh, 2.5rem);
+}
+
+.saludo {
+  max-width: 12ch;
+  margin: 0;
+  font-family: var(--familia-display);
+  font-size: clamp(2.25rem, 4.4vw, 4rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: var(--track-nombre);
+  color: var(--tinta);
+}
+
+.intro {
+  margin: clamp(1.5rem, 2.6vw, 2.25rem) 0 0;
+  font-family: var(--familia-display);
+  font-size: var(--tam-statement);
+  line-height: var(--alto-statement);
+  color: var(--tinta-suave);
+  text-wrap: pretty;
+}
+
+/* --- fichas -------------------------------------------------------------- */
+
+.fichas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 4.5rem);
+  margin-top: clamp(4rem, 12vh, 9rem);
+  /* corridas a la derecha: la apertura pesa a la izquierda y esto lo compensa
+     sin volver a centrar todo */
+  margin-left: auto;
+  width: min(100%, 54rem);
+}
+
+.rotulo {
+  margin: 0 0 0.9rem;
+  font-family: var(--familia-meta);
+  font-size: var(--tam-meta);
+  font-weight: 500;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+.parrafo {
+  margin: 0;
+  font-family: var(--familia-display);
+  font-size: var(--tam-statement);
+  line-height: var(--alto-statement);
+  color: var(--tinta-suave);
+  text-wrap: pretty;
+}
+
+/* --- escena y proposito -------------------------------------------------- */
+
+.escena {
+  margin-top: clamp(4.5rem, 14vh, 10rem);
+}
+
+.proposito {
+  max-width: 26ch;
+  margin: clamp(3rem, 8vh, 6rem) 0 0 auto;
+  font-family: var(--familia-display);
+  font-style: italic;
+  font-size: clamp(1.5rem, 3.4vw, 2.75rem);
+  line-height: 1.32;
+  color: var(--tinta);
+  text-wrap: pretty;
+}
+
+.cierre {
+  max-width: 44ch;
+  margin-top: clamp(4rem, 12vh, 9rem);
+}
+
+/* --- movil --------------------------------------------------------------- */
+
+@media (max-width: 48rem) {
+  .pista {
+    /* menos recorrido muerto: en un telefono cada pantalla de scroll se nota */
+    height: 165svh;
+  }
+
+  .frase {
+    max-width: 13ch;
+  }
+
+  .apertura {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: clamp(1.5rem, 5vh, 2.5rem);
+  }
+
+  .retrato {
+    grid-column: 1;
+    width: 88%;
+  }
+
+  .presentacion {
+    grid-column: 1;
+    padding-bottom: 0;
+  }
+
+  .fichas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .proposito {
+    max-width: none;
+  }
+}
+
+/* --- sin movimiento ------------------------------------------------------- */
+
+/*
+  Con prefers-reduced-motion no hay nada que scrollear: dejar 200svh de pista
+  vacia seria hacerle recorrer dos pantallas para nada. La frase pasa a ser un
+  titulo normal, en su tamano final, y el cuerpo viene justo debajo.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .pista {
+    height: auto;
+  }
+
+  /* sin pista que solapar, el tiron sobra */
+  .cuerpo {
+    margin-top: 0;
+  }
+
+  .fijo {
+    position: static;
+    height: auto;
+    padding: clamp(8rem, 22vh, 14rem) var(--margen-borde) clamp(3rem, 8vh, 6rem);
+  }
+
+  /* la mascara y el recorrido se caen; queda la aparicion, que no marea */
+  .frase {
+    max-width: 22ch;
+    font-size: clamp(2rem, 4.6vw, 3.5rem);
+    will-change: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+    animation: aparecer var(--dur-media) var(--curva) both;
+  }
+
+  /*
+    Sin pista, la caja mide lo que mide el texto y la aguada termina en un
+    canto recto a media pagina. Se la diluye hacia abajo, igual que ya se
+    diluye hacia arriba dentro de la imagen.
+  */
+  .manchas {
+    bottom: -8%;
+    will-change: auto;
+    -webkit-mask-image: linear-gradient(to bottom, #000 52%, transparent 96%);
+    mask-image: linear-gradient(to bottom, #000 52%, transparent 96%);
+  }
+
+  .manchasEntrada {
+    transform: none;
+    animation: aparecer var(--dur-media) var(--curva) both;
+  }
+
+  @keyframes aparecer {
+    to {
+      opacity: 1;
+    }
+  }
+}

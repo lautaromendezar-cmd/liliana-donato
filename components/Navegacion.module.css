@@ -1,0 +1,144 @@
+/*
+  Sin recuadros, sin botones, sin desplegables. La navegacion es una linea de
+  texto a cada lado y nada mas; lo unico que pasa al hover es que el color se
+  acerca a la tinta, despacio.
+*/
+
+.barra {
+  position: fixed;
+  z-index: var(--z-nav);
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem) var(--margen-borde);
+  opacity: 0;
+  animation: bajar var(--dur-larga) var(--curva) 200ms both;
+}
+
+/*
+  El carril. Del color del fondo y con borde neto, no degradado: el degradado
+  se leia como una mancha lavada encima de la pintura. Un canto limpio se lee
+  como margen de pagina, y lo que scrollea pasa por detras, recortado.
+
+  Arranca invisible. Arriba de todo no hay nada que proteger -las aguadas ya
+  se desvanecen antes de llegar- y ahi la franja solo se notaria como una
+  barra pegada al borde. Entra cuando el contenido empieza a subir.
+*/
+.barra::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--carril-nav);
+  background: var(--papel);
+  opacity: 0;
+  transition: opacity var(--dur-corta) var(--curva);
+  pointer-events: none;
+}
+
+.barra[data-carril]::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .barra::before {
+    transition: none;
+  }
+}
+
+
+@keyframes bajar {
+  from {
+    transform: translate3d(0, -0.4rem, 0);
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2.2vw, 2.25rem);
+  justify-content: flex-end;
+}
+
+/*
+  El color de reposo es --tinta-suave y no --tinta-tenue: a 12 px el tenue
+  da 3.6:1 sobre el papel y AA pide 4.5:1 para texto chico. El tenue queda
+  para lo que sea decorativo de verdad; un menu no lo es.
+*/
+.enlace {
+  display: inline-block;
+  font-family: var(--familia-meta);
+  font-size: var(--tam-meta);
+  font-weight: 500;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  transition: color var(--dur-corta) var(--curva);
+}
+
+.enlace:hover,
+.enlace:focus-visible {
+  color: var(--tinta);
+}
+
+/*
+  Pagina actual: un punto al margen, sin recuadro ni subrayado. El punto va
+  posicionado hacia afuera para no correr el rotulo, que si no baila cada vez
+  que se cambia de seccion.
+*/
+.enlace[aria-current="page"] {
+  position: relative;
+  color: var(--tinta);
+}
+
+.enlace[aria-current="page"]::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -0.75em;
+  width: 0.28em;
+  height: 0.28em;
+  margin-top: -0.14em;
+  border-radius: 50%;
+  background: var(--magenta);
+}
+
+.marca {
+  color: var(--tinta);
+  /* el tracking abre la caja alta por la derecha y descentra el conjunto */
+  margin-right: calc(var(--track-meta) * -1);
+}
+
+@media (max-width: 40rem) {
+  .barra {
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .lista {
+    justify-content: flex-start;
+    gap: 0.9rem 1.1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .barra {
+    animation: aparecer var(--dur-media) var(--curva) both;
+  }
+
+  @keyframes aparecer {
+    to {
+      opacity: 1;
+    }
+  }
+}

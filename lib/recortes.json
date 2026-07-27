@@ -1,0 +1,50 @@
+{
+  "pasto-1": {
+    "alto": 799,
+    "ancho": 878
+  },
+  "pasto-2": {
+    "alto": 539,
+    "ancho": 793
+  },
+  "pasto-3": {
+    "alto": 1100,
+    "ancho": 491
+  },
+  "petalo-1": {
+    "alto": 120,
+    "ancho": 116
+  },
+  "petalo-2": {
+    "alto": 111,
+    "ancho": 120
+  },
+  "petalo-3": {
+    "alto": 113,
+    "ancho": 120
+  },
+  "petalo-4": {
+    "alto": 120,
+    "ancho": 104
+  },
+  "petalo-5": {
+    "alto": 98,
+    "ancho": 120
+  },
+  "petalo-6": {
+    "alto": 120,
+    "ancho": 76
+  },
+  "rama-alta": {
+    "alto": 723,
+    "ancho": 1600
+  },
+  "rama-derecha": {
+    "alto": 1400,
+    "ancho": 1211
+  },
+  "rama-principal": {
+    "alto": 1600,
+    "ancho": 1388
+  }
+}

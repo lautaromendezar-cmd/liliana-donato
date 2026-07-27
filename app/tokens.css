@@ -1,0 +1,102 @@
+/*
+  Sistema de diseno. Todo lo que un componente pueda necesitar decidir sobre
+  color, tipografia, ritmo o tiempo se decide aca. Un componente que escribe
+  un valor crudo esta abriendo una segunda fuente de verdad.
+*/
+
+:root {
+  /* --- papel ------------------------------------------------------------
+     Nunca blanco puro. El blanco de pantalla al lado de una acuarela sobre
+     papel de algodon se lee como un agujero. */
+  --papel: #faf6ee;
+  --papel-denso: #f5eedf;
+
+  /* --- tinta -------------------------------------------------------------
+     El verde bosque sale del logo. Se usa para texto, no como color de
+     marca decorativo. */
+  --tinta: #2e4630;
+  --tinta-suave: #5c6b52;
+  --tinta-tenue: #7a8570;
+
+  /* --- pigmentos ---------------------------------------------------------
+     Los de la paleta de la pintora. Son acentos: aparecen en la obra, no en
+     la interfaz. */
+  --magenta: #c6355f;
+  --rosa: #d95c7e;
+  --rosa-lavado: #e8b8c4;
+  --oliva: #7b8b4f;
+  --salvia: #93a05c;
+  --ocre: #e8a93e;
+  --dorado: #c9a227;
+
+  /* --- tipografia --------------------------------------------------------
+     Dos familias y nada mas: una serif de contraste real para el display y
+     una grotesque neutra para todo lo que sea dato. La distancia entre las
+     dos es la que hace el sistema. */
+  --familia-display: var(--fuente-display), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --familia-meta: var(--fuente-meta), ui-sans-serif, system-ui, sans-serif;
+
+  /* El salto es deliberado: entre el nombre y el statement hay un factor de
+     casi diez. Una escala suave aca dejaria el hero tibio. */
+  --tam-nombre: clamp(4rem, 11vw, 10rem);
+  --tam-statement: clamp(1.0625rem, 0.72rem + 1.1vw, 1.5rem);
+  --tam-meta: clamp(0.625rem, 0.53rem + 0.24vw, 0.75rem);
+
+  --alto-nombre: 0.92;
+  --alto-statement: 1.62;
+
+  --track-nombre: -0.022em;
+  --track-meta: 0.2em;
+
+  /* --- ritmo ------------------------------------------------------------- */
+
+  /* Franja de arriba reservada a la navegacion. Ningun medio -foto, mancha,
+     recorte- entra ahi: el menu se apoya siempre sobre papel liso y no hace
+     falta taparle nada por debajo. */
+  --carril-nav: clamp(4.25rem, 3.6rem + 2.6vw, 6rem);
+  /* en pantallas angostas la navegacion pasa a dos filas y crece: ver el
+     ajuste al final de este archivo */
+
+  --medida-statement: 38ch;
+  --margen-borde: clamp(1.25rem, 3.2vw, 3.25rem);
+  --hueco-nombre-statement: clamp(1.5rem, 2.6vw, 2.75rem);
+  --hueco-statement-meta: clamp(1.25rem, 2vw, 2rem);
+
+  /* --- movimiento --------------------------------------------------------
+     Nada por debajo de 600 ms y ninguna curva que pase de 1 y vuelva: un
+     rebote convierte una acuarela en un juguete. */
+  --dur-corta: 620ms;
+  --dur-media: 900ms;
+  --dur-larga: 1200ms;
+  --dur-revelado: 1400ms;
+
+  /* salida exponencial: llega y se queda, sin sobrepasar */
+  --curva: cubic-bezier(0.16, 1, 0.3, 1);
+  --curva-suave: cubic-bezier(0.33, 0, 0.15, 1);
+
+  /* Amplitudes del parallax por capa. El fondo se mueve poco y el frente
+     mucho: esa diferencia es toda la profundidad. */
+  --parallax-fondo: 10px;
+  --parallax-medio: 22px;
+  --parallax-frente: 35px;
+
+  /* --- capas ------------------------------------------------------------- */
+  --z-grano: 0;
+  --z-fondo: 1;
+  --z-medio: 2;
+  --z-frente: 3;
+  --z-petalos: 4;
+  --z-texto: 5;
+  --z-nav: 6;
+}
+
+/*
+  Debajo de 40rem la marca y el menu no entran en una linea y la barra pasa a
+  dos filas. El carril tiene que crecer con ella: si queda corto, los enlaces
+  sobresalen justo por donde pasa el contenido.
+*/
+@media (max-width: 40rem) {
+  :root {
+    --carril-nav: 6.25rem;
+  }
+}

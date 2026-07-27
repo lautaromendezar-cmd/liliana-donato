@@ -1,0 +1,26 @@
+node_modules/
+.next/
+out/
+build/
+
+.env*
+!.env.example
+
+.DS_Store
+*.pem
+npm-debug.log*
+yarn-error.log*
+.vercel
+next-env.d.ts
+*.tsbuildinfo
+
+# Material de origen: los originales de la pintora, pesados y no versionables.
+# Anclados con barra inicial: sin ella, "hero/" tambien tapa public/hero/, que
+# son los recortes que el sitio necesita para funcionar.
+/contenido/
+/hero/
+
+# revision del recorte, no se publica
+scripts/contact-sheet.png
+scripts/__pycache__/
+scripts/_capturas/

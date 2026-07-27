@@ -1,0 +1,166 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--papel);
+  isolation: isolate;
+}
+
+/*
+  Grano de papel. Va DEBAJO del follaje, que es donde corresponde: el pigmento
+  esta sobre el papel, no el papel sobre el pigmento. De paso no toca el texto.
+  El ruido se rasteriza una vez y no se vuelve a calcular.
+*/
+.grano {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-grano);
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.86' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.09'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+}
+
+/* --- bloque central ------------------------------------------------------ */
+
+.centro {
+  position: relative;
+  z-index: var(--z-texto);
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--margen-borde);
+  text-align: center;
+  will-change: transform;
+}
+
+.nombre {
+  font-family: var(--familia-display);
+  font-size: var(--tam-nombre);
+  font-weight: 400;
+  line-height: var(--alto-nombre);
+  letter-spacing: var(--track-nombre);
+  color: var(--tinta);
+
+  /*
+    Revelado por mascara. La mascara mide 260% del ancho y se desliza: el
+    borde blando cruza el nombre en vez de descubrirlo de golpe. Se anima
+    mask-position, que es una propiedad normal, y no una variable registrada:
+    si el navegador no soporta mascaras el nombre simplemente se ve.
+  */
+  -webkit-mask-image: linear-gradient(
+    100deg,
+    transparent 0%,
+    transparent 38%,
+    #000 62%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    100deg,
+    transparent 0%,
+    transparent 38%,
+    #000 62%,
+    #000 100%
+  );
+  -webkit-mask-size: 260% 100%;
+  mask-size: 260% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 0% 0;
+  mask-position: 0% 0;
+  animation: revelar var(--dur-revelado) var(--curva-suave) 300ms both;
+}
+
+@keyframes revelar {
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+
+.statement {
+  max-width: var(--medida-statement);
+  margin-top: var(--hueco-nombre-statement);
+  font-family: var(--familia-display);
+  font-style: italic;
+  font-size: var(--tam-statement);
+  line-height: var(--alto-statement);
+  color: var(--tinta-suave);
+  text-wrap: pretty;
+  opacity: 0;
+  animation: subir var(--dur-larga) var(--curva) 950ms both;
+}
+
+.ubicacion {
+  margin-top: var(--hueco-statement-meta);
+  font-family: var(--familia-meta);
+  font-size: var(--tam-meta);
+  font-weight: 400;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  /* tenue de aspecto pero legible: --tinta-tenue a este cuerpo no llega a AA */
+  color: var(--tinta-suave);
+  margin-right: calc(var(--track-meta) * -1);
+  opacity: 0;
+  animation: subir var(--dur-larga) var(--curva) 1250ms both;
+}
+
+@keyframes subir {
+  from {
+    transform: translate3d(0, 0.75rem, 0);
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 48rem) {
+  .centro {
+    /* en movil el nombre sube: el follaje de abajo necesita aire */
+    justify-content: center;
+    padding-bottom: 16vh;
+  }
+
+  /*
+    En una linea el nombre se come el ancho entero y no deja margen lateral
+    para nada. Partido en dos ocupa poco mas de la mitad, y ademas gana:
+    dos palabras de ese cuerpo, una sobre otra, tienen mas presencia que una
+    sola linea apretada contra los bordes.
+  */
+  .nombre {
+    max-width: 62%;
+  }
+
+  .statement {
+    max-width: 27ch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .centro {
+    will-change: auto;
+  }
+
+  .nombre {
+    -webkit-mask-image: none;
+    mask-image: none;
+    animation: aparecer var(--dur-media) var(--curva) both;
+  }
+
+  .statement,
+  .ubicacion {
+    transform: none;
+    animation: aparecer var(--dur-media) var(--curva) 150ms both;
+  }
+
+  @keyframes aparecer {
+    to {
+      opacity: 1;
+    }
+  }
+}

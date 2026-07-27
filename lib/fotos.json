@@ -1,0 +1,10 @@
+{
+  "pintando": {
+    "alto": 880,
+    "ancho": 1080
+  },
+  "retrato": {
+    "alto": 1110,
+    "ancho": 1000
+  }
+}
