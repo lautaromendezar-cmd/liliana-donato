@@ -302,8 +302,8 @@
   {
     "slug": "paisaje-urbano",
     "seccion": "series",
-    "ancho": 1600,
-    "alto": 1577,
+    "ancho": 1577,
+    "alto": 1600,
     "titulo": "Paisaje Urbano I",
     "tecnica": "Óleo",
     "medidas": "30 x 30 cm",
@@ -312,8 +312,8 @@
   {
     "slug": "paisaje-urbano-2",
     "seccion": "series",
-    "ancho": 1536,
-    "alto": 1600,
+    "ancho": 1600,
+    "alto": 1536,
     "titulo": "Paisaje Urbano II",
     "tecnica": "Óleo",
     "medidas": "0 x 30 cm",
@@ -332,9 +332,9 @@
   {
     "slug": "paisaje-urbano-4",
     "seccion": "series",
-    "ancho": 1518,
+    "ancho": 1593,
     "alto": 1600,
-    "titulo": "Paisaje urbano",
+    "titulo": "Paisaje Urbano IV",
     "tecnica": "Óleo",
     "medidas": "30 x 30 cm",
     "vendida": false

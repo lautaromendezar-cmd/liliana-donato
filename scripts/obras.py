@@ -2,12 +2,13 @@
 
   python scripts/obras.py
 
-Dos problemas del material de origen:
+Tres problemas del material de origen:
 
 1. Varias fotos no son reproducciones sino fotos de contexto: la obra sobre
    una mesa, a veces enmarcada, con frascos y pinceles al lado. Publicarlas
    asi seria mostrar la mesa. Se recortan.
-2. La ficha tecnica (titulo, tecnica, medidas, si esta vendida) vive en el
+2. Algunas estan fotografiadas de costado. Se enderezan con GIROS.
+3. La ficha tecnica (titulo, tecnica, medidas, si esta vendida) vive en el
    nombre del archivo, con erratas. Se parsea y se reporta lo dudoso.
 
 El recorte se detecta por TEXTURA y no por bordes: una pintura tiene varianza
@@ -61,7 +62,22 @@ RECORTES: dict[str, tuple[float, float, float, float]] = {
     "Serie_ _Paisaje Urbano_, óleo,30x30cm.jpg": (0.155, 0.175, 0.855, 0.865),
     "Serie_Paisaje Urbano_ óleo, 0x30cm.jpg": (0.13, 0.13, 0.85, 0.88),
     "Serie_Paisaje Urbano_ óleo, 30x30cm.jpg": (0.10, 0.10, 0.90, 0.86),
-    "Serie_Paisaje urbano, óleo,30x30cm.jpg": (0.12, 0.12, 0.86, 0.90),
+    # la caja vieja entraba 90 px dentro de la tela por el lado de la firma y
+    # le cortaba la ultima letra; estos son los bordes medidos del bastidor
+    "Serie_Paisaje urbano, óleo,30x30cm.jpg": (0.145, 0.142, 0.883, 0.877),
+}
+
+# Obras fotografiadas de costado, en grados HORARIOS: cuanto hay que girar la
+# foto para enderezarla. Se detecta por la firma, que la pintora pone siempre
+# horizontal abajo a la derecha; cuando aparece vertical sobre un borde, la
+# foto esta rotada.
+#
+# El giro se aplica DESPUES de recortar, asi las cajas de RECORTES se siguen
+# leyendo sobre la foto como esta en disco y no hay que reescribirlas.
+GIROS: dict[str, int] = {
+    "Serie_ _Paisaje Urbano_, óleo,30x30cm.jpg": 90,
+    "Serie_Paisaje Urbano_ óleo, 0x30cm.jpg": 90,
+    "Serie_Paisaje urbano, óleo,30x30cm.jpg": 90,
 }
 
 # Fotos que no sirven aunque se recorten, y por que.
@@ -204,6 +220,12 @@ def main() -> None:
             im = recortar(im, caja, aire=0.0 if a_mano else 0.006)
 
             recorto = (im.width, im.height) != antes
+            giro = GIROS.get(archivo, 0)
+            if giro:
+                # PIL gira en sentido antihorario, y su atajo exacto para los
+                # multiplos de 90 solo entra con el angulo normalizado a 0-359
+                im = im.rotate((-giro) % 360, expand=True)
+
             if im.width > LADO_MAX or im.height > LADO_MAX:
                 e = LADO_MAX / max(im.width, im.height)
                 im = im.resize((round(im.width * e), round(im.height * e)),
@@ -229,11 +251,12 @@ def main() -> None:
                     dudosas.append((archivo, "medidas raras: %s"
                                     % datos["medidas"]))
 
-            print("%-9s %-26s %-22s %-14s %s%s"
+            print("%-9s %-26s %-22s %-14s %s%s%s"
                   % (seccion, nombre[:26], datos["titulo"][:22],
                      datos["medidas"] or "-",
                      "VENDIDA " if datos["vendida"] else "",
-                     "recortada" if recorto else ""))
+                     "recortada " if recorto else "",
+                     "girada %d°" % giro if giro else ""))
 
     # Cuatro obras llamadas "Paisaje Urbano" en la misma pagina no se pueden
     # nombrar entre si. Se numeran, que es como se cataloga una serie.
