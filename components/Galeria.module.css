@@ -162,6 +162,25 @@
   background: var(--magenta);
 }
 
+/* --- nota al pie (la usa Objetos) ---------------------------------------- */
+
+.nota {
+  max-width: 36ch;
+  margin: clamp(4rem, 12vh, 8rem) 0 0;
+  font-family: var(--familia-display);
+  font-size: var(--tam-statement);
+  line-height: var(--alto-statement);
+  color: var(--tinta-suave);
+  text-wrap: pretty;
+}
+
+.notaEnlace {
+  color: var(--tinta);
+  text-decoration: underline;
+  text-decoration-color: var(--magenta);
+  text-underline-offset: 0.2em;
+}
+
 /* --- movil --------------------------------------------------------------- */
 
 @media (max-width: 48rem) {

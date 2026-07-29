@@ -214,6 +214,32 @@
   text-wrap: pretty;
 }
 
+/* --- publicaciones -------------------------------------------------------- */
+
+.publicaciones {
+  margin-top: clamp(4rem, 12vh, 9rem);
+}
+
+.publicacionesTexto {
+  max-width: 44ch;
+}
+
+/*
+  La foto apaisada de los libros ocupa el ancho entero y las dos paginas
+  interiores, verticales y de igual proporcion, se reparten debajo. En movil
+  se mantienen las dos columnas: son retratos, y a la par siguen entrando.
+*/
+.libros {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+  margin-top: clamp(2rem, 5vh, 3.5rem);
+}
+
+.libroAncho {
+  grid-column: 1 / -1;
+}
+
 /* --- escena y proposito -------------------------------------------------- */
 
 .escena {

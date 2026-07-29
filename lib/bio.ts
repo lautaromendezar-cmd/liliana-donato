@@ -10,6 +10,7 @@
 import fotos from "./fotos.json";
 import medidasMarca from "./marca.json";
 import medidasManchas from "./manchas.json";
+import medidasPublicaciones from "./publicaciones.json";
 
 /**
  * Fondo de la frase de apertura. Son recortes reales de "Primaveral" y
@@ -40,6 +41,36 @@ export const PARRAFOS = [
       "Mis técnicas favoritas son el óleo, la acuarela, el acrílico y también poder experimentar con medios mixtos para expresar mis ideas.",
   },
 ] as const;
+
+/**
+ * Publicaciones en libros. Las fotos las mando ella por WhatsApp; no mando
+ * texto, asi que el parrafo es descriptivo y solo dice lo que se ve en las
+ * fotos: los titulos y el sello editorial salen de las tapas, y las obras de
+ * las paginas interiores. Si Liliana manda su propio texto, va el de ella.
+ * Las medidas las escribe scripts/publicaciones.py.
+ */
+export const PUBLICACIONES = {
+  rotulo: "Publicaciones",
+  texto:
+    "Su obra fue publicada en tres libros de Ediciones Institucionales: El Arte Argentino del Bicentenario, Una Visión Actual del Arte Argentino y Panorama del Arte Argentino.",
+  libros: {
+    src: "/bio/publicacion-libros.webp",
+    alt: "Los tres libros de Ediciones Institucionales que incluyen su obra, apoyados uno junto al otro.",
+    ...medidasPublicaciones["publicacion-libros"],
+  },
+  paginas: [
+    {
+      src: "/bio/publicacion-barrio-gotico.webp",
+      alt: "Página de Una Visión Actual del Arte Argentino con el óleo Barrio gótico, de Liliana I. Donato.",
+      ...medidasPublicaciones["publicacion-barrio-gotico"],
+    },
+    {
+      src: "/bio/publicacion-la-espera.webp",
+      alt: "Página de libro con el óleo La espera, de Liliana I. Donato, 40 x 30 cm.",
+      ...medidasPublicaciones["publicacion-la-espera"],
+    },
+  ],
+} as const;
 
 /** Su declaración de propósito: va sola, en cuerpo grande. */
 export const PROPOSITO =

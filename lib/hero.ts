@@ -44,6 +44,7 @@ export const NAVEGACION = [
   { rotulo: "Series", href: "/series" },
   { rotulo: "Acuarelas", href: "/acuarelas" },
   { rotulo: "Óleos", href: "/oleos" },
+  { rotulo: "Objetos", href: "/objetos" },
   { rotulo: "Bio", href: "/bio" },
   { rotulo: "Contacto", href: "/contacto" },
 ] as const;

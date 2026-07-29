@@ -19,6 +19,7 @@ import {
   PARRAFOS,
   PINTANDO,
   PROPOSITO,
+  PUBLICACIONES,
   RETRATO,
   SALUDO,
   SELLO,
@@ -135,6 +136,41 @@ export function Bio() {
                 <p className={estilos.parrafo}>{p.texto}</p>
               </Revelar>
             ))}
+          </section>
+
+          <section className={estilos.publicaciones}>
+            <Revelar className={estilos.publicacionesTexto}>
+              <h3 className={estilos.rotulo}>{PUBLICACIONES.rotulo}</h3>
+              <p className={estilos.parrafo}>{PUBLICACIONES.texto}</p>
+            </Revelar>
+
+            {/* La apaisada de los tres libros encabeza; las dos paginas
+                interiores, verticales, van a la par debajo. */}
+            <div className={estilos.libros}>
+              <Revelar className={estilos.libroAncho}>
+                <Image
+                  src={PUBLICACIONES.libros.src}
+                  alt={PUBLICACIONES.libros.alt}
+                  width={PUBLICACIONES.libros.ancho}
+                  height={PUBLICACIONES.libros.alto}
+                  sizes="(max-width: 48rem) 100vw, 76rem"
+                  className={estilos.foto}
+                />
+              </Revelar>
+
+              {PUBLICACIONES.paginas.map((pagina, i) => (
+                <Revelar key={pagina.src} demora={i * 0.08}>
+                  <Image
+                    src={pagina.src}
+                    alt={pagina.alt}
+                    width={pagina.ancho}
+                    height={pagina.alto}
+                    sizes="(max-width: 48rem) 44vw, 37rem"
+                    className={estilos.foto}
+                  />
+                </Revelar>
+              ))}
+            </div>
           </section>
 
           <Revelar className={estilos.escena}>

@@ -1,0 +1,14 @@
+{
+  "publicacion-barrio-gotico": {
+    "alto": 1280,
+    "ancho": 720
+  },
+  "publicacion-la-espera": {
+    "alto": 1280,
+    "ancho": 720
+  },
+  "publicacion-libros": {
+    "alto": 720,
+    "ancho": 1280
+  }
+}
