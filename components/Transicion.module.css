@@ -1,0 +1,107 @@
+.velo {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-velo);
+  display: grid;
+  place-items: center;
+  background: var(--papel);
+
+  /*
+    El color lo fija la pagina que esta debajo. Al entrar a contacto los tokens
+    se invierten con el velo ya opaco: el fondo pasa de crema a verde mientras
+    tapa, y esa transicion hace que el cambio se lea como parte del viaje en
+    vez de como un parpadeo al destapar.
+  */
+  transition: background-color var(--dur-corta) var(--curva);
+}
+
+.entrando {
+  animation: tapar var(--dur-tapar) var(--curva-suave) both;
+}
+
+.saliendo {
+  animation: destapar var(--dur-destapar) var(--curva) both;
+}
+
+@keyframes tapar {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes destapar {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/*
+  Mismo barrido de mascara que el nombre del hero: la mascara mide 260% del
+  ancho y se desliza, asi que el borde blando cruza el trebol en vez de
+  descubrirlo de golpe. Se anima mask-position, que es una propiedad normal:
+  si el navegador no soporta mascaras el trebol simplemente se ve.
+*/
+.trebol {
+  width: clamp(3.25rem, 6vw, 5rem);
+  height: auto;
+
+  -webkit-mask-image: linear-gradient(
+    100deg,
+    transparent 0%,
+    transparent 38%,
+    #000 62%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    100deg,
+    transparent 0%,
+    transparent 38%,
+    #000 62%,
+    #000 100%
+  );
+  -webkit-mask-size: 260% 100%;
+  mask-size: 260% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.entrando .trebol {
+  -webkit-mask-position: 0% 0;
+  mask-position: 0% 0;
+  animation: revelarTrebol var(--dur-tapar) var(--curva-suave) both;
+}
+
+/* al destapar no se vuelve a barrer: el trebol se va con el velo, entero */
+.saliendo .trebol {
+  -webkit-mask-position: 100% 0;
+  mask-position: 100% 0;
+}
+
+@keyframes revelarTrebol {
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+
+/*
+  Con menos movimiento el velo no se intercepta y esto no llega a montarse.
+  Queda igual por si alguien cambia la preferencia con la transicion en curso.
+*/
+@media (prefers-reduced-motion: reduce) {
+  .velo {
+    transition: none;
+  }
+
+  .entrando,
+  .saliendo,
+  .entrando .trebol {
+    animation-duration: 1ms;
+  }
+}

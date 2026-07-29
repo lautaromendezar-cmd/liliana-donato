@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 
 import { Navegacion } from "@/components/Navegacion";
+import { Transicion } from "@/components/Transicion";
 
 import { display, meta } from "./tipografia";
 import "./globals.css";
@@ -34,6 +35,7 @@ export default function RootLayout({
       <body>
         <Navegacion />
         {children}
+        <Transicion />
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 ﻿/** Contenido y composicion del hero. */
 
+import medidasTrebol from "./marca.json";
 import recortes from "./recortes.json";
 
 /**
@@ -19,6 +20,16 @@ export const STATEMENT =
 export const UBICACION = "Artista visual · Buenos Aires, Argentina";
 
 export const MARCA = "Liliana Donato · Arte";
+
+/**
+ * El trebol del sello, recortado por scripts/marca.py. Va sin texto
+ * alternativo a proposito: al lado tiene el nombre escrito, y describirlo
+ * seria hacer que un lector de pantalla diga la marca dos veces.
+ */
+export const TREBOL = {
+  src: "/marca/trebol.webp",
+  ...medidasTrebol,
+} as const;
 
 export const NAVEGACION = [
   { rotulo: "Series", href: "/series" },

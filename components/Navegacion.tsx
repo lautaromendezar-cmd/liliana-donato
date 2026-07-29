@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { MARCA, NAVEGACION } from "@/lib/hero";
+import { MARCA, NAVEGACION, TREBOL } from "@/lib/hero";
 
 import estilos from "./Navegacion.module.css";
 
@@ -26,23 +28,35 @@ export function Navegacion() {
 
   return (
     <header className={estilos.barra} data-carril={desplazado ? "" : undefined}>
-      <a href="/" className={`${estilos.enlace} ${estilos.marca}`}>
-        {MARCA}
-      </a>
+      <Link href="/" className={estilos.marca}>
+        {/*
+          Sin alt a proposito: el nombre esta escrito al lado, y describir el
+          trebol haria que un lector de pantalla diga la marca dos veces.
+        */}
+        <Image
+          src={TREBOL.src}
+          alt=""
+          width={TREBOL.ancho}
+          height={TREBOL.alto}
+          className={estilos.trebol}
+          priority
+        />
+        <span>{MARCA}</span>
+      </Link>
 
       <nav aria-label="Secciones">
         <ul className={estilos.lista}>
           {NAVEGACION.map((item) => {
-            const actual = item.href.startsWith("/") && ruta === item.href;
+            const actual = ruta === item.href;
             return (
               <li key={item.href}>
-                <a
+                <Link
                   href={item.href}
                   className={estilos.enlace}
                   aria-current={actual ? "page" : undefined}
                 >
                   {item.rotulo}
-                </a>
+                </Link>
               </li>
             );
           })}

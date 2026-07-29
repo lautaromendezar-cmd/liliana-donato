@@ -11,7 +11,9 @@
   left: 0;
   right: 0;
   display: flex;
-  align-items: baseline;
+  /* centrado y no baseline: la marca ahora tiene una imagen adentro, y una
+     imagen no aporta linea base, asi que alinear por ella descolgaba el menu */
+  align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
   padding: clamp(1.5rem, 3vw, 2.5rem) var(--margen-borde);
@@ -113,15 +115,36 @@
   background: var(--magenta);
 }
 
+/*
+  La marca: el trebol del sello y el nombre en la serif del home.
+
+  El sello entero no entra aca. Ya trae "LILIANA DONATO" y "ARTE" adentro, asi
+  que al lado del nombre lo diria dos veces; y a este cuerpo los dos aros
+  dorados y las guardas se hacen pure. El trebol es la unica parte que
+  sobrevive al tamano de una barra.
+*/
 .marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-family: var(--familia-display);
+  font-size: clamp(1.05rem, 0.85rem + 0.75vw, 1.5rem);
+  line-height: 1;
   color: var(--tinta);
-  /* el tracking abre la caja alta por la derecha y descentra el conjunto */
-  margin-right: calc(var(--track-meta) * -1);
+}
+
+.trebol {
+  /* al alto del nombre y un poco mas: mas chico se lee como una mancha */
+  height: 1.7em;
+  width: auto;
 }
 
 @media (max-width: 40rem) {
   .barra {
     flex-direction: column;
+    /* en columna, align-items pasa a ser el eje horizontal: centrar aca
+       arrastraria la marca y el menu al medio de la pantalla */
+    align-items: flex-start;
     gap: 0.9rem;
   }
 

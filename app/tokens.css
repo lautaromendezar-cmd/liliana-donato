@@ -72,6 +72,13 @@
   --dur-larga: 1200ms;
   --dur-revelado: 1400ms;
 
+  /* El velo de transicion. Suman poco mas de un segundo por navegacion, que
+     es mucho para una interfaz y esta bien para esto: el sitio entero esta
+     calibrado lento y el hero tarda 1400 ms en revelarse solo. Si llega a
+     cansar, se bajan estos dos numeros y no hay que tocar nada mas. */
+  --dur-tapar: var(--dur-corta);
+  --dur-destapar: var(--dur-corta);
+
   /* salida exponencial: llega y se queda, sin sobrepasar */
   --curva: cubic-bezier(0.16, 1, 0.3, 1);
   --curva-suave: cubic-bezier(0.33, 0, 0.15, 1);
@@ -90,6 +97,9 @@
   --z-petalos: 4;
   --z-texto: 5;
   --z-nav: 6;
+  /* el velo tapa tambien la navegacion, que es fija y si no quedaria flotando
+     por encima de la transicion */
+  --z-velo: 7;
 }
 
 /*
