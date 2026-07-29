@@ -42,11 +42,11 @@
   {
     "slug": "calido-frio",
     "seccion": "acuarelas",
-    "ancho": 1600,
-    "alto": 1200,
+    "ancho": 1200,
+    "alto": 1600,
     "titulo": "Cálido Frio",
     "tecnica": "Acuarela",
-    "medidas": "28 x 4 cm",
+    "medidas": "28 x 40 cm",
     "vendida": false
   },
   {
@@ -86,7 +86,7 @@
     "alto": 1600,
     "titulo": "Flores pálidas",
     "tecnica": "Acuarela",
-    "medidas": "28 x 4 cm",
+    "medidas": "28 x 40 cm",
     "vendida": false
   },
   {
@@ -96,7 +96,7 @@
     "alto": 1110,
     "titulo": "Flores rosas",
     "tecnica": "Acuarela",
-    "medidas": "45 x 5 cm",
+    "medidas": "45 x 50 cm",
     "vendida": true
   },
   {

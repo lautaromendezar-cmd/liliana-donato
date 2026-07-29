@@ -50,8 +50,10 @@ export function Contacto() {
                   <a
                     className={estilos.canal}
                     href={c.href}
-                    target="_blank"
-                    rel="noreferrer"
+                    // mailto: y tel: abren una pestaña en blanco si se les
+                    // fuerza target _blank; solo los enlaces http van afuera
+                    target={c.href.startsWith("http") ? "_blank" : undefined}
+                    rel={c.href.startsWith("http") ? "noreferrer" : undefined}
                   >
                     <span className={estilos.rotulo}>{c.rotulo}</span>
                     <span className={estilos.valor}>{c.valor}</span>

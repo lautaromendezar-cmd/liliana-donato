@@ -5,11 +5,10 @@
  * sacar la frase que encabezaba la pagina y dejar solo la invitacion a
  * escribirle, que pasa a ser el unico texto grande.
  *
- * No hay telefono ni email. Habia un WhatsApp, pero el numero se habia leido
- * de las tarjetas que se ven en la foto de "Primaveral"
- * (contenido/Obras/Acuarelas) y ella nunca lo confirmo; el Instagram salio de
- * la misma foto y resulto mal escrito, asi que el numero se saca hasta que lo
- * confirme. No reponerlo desde esa foto.
+ * El email y el celular los paso ella misma (julio 2026), asi que ya se pueden
+ * mostrar. Ojo con el historial: antes hubo un WhatsApp leido de las tarjetas
+ * de la foto "Primaveral" (contenido/Obras/Acuarelas) que nunca confirmo y se
+ * saco; el numero valido es el que figura aca, no el de esa foto.
  */
 
 import medidasManchas from "./manchas.json";
@@ -28,6 +27,16 @@ export const CANALES = [
     rotulo: "Instagram",
     valor: "@lilidonatoarte",
     href: "https://instagram.com/lilidonatoarte",
+  },
+  {
+    rotulo: "Email",
+    valor: "lili.donato1959@gmail.com",
+    href: "mailto:lili.donato1959@gmail.com",
+  },
+  {
+    rotulo: "Celular",
+    valor: "11 5560-4252",
+    href: "tel:+541155604252",
   },
   // ella lo paso como "lilidonato.redbuble", que es el usuario y el nombre del
   // sitio pegados; el usuario solo es "lilidonato"
