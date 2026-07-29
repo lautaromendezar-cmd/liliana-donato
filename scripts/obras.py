@@ -59,6 +59,10 @@ RECORTES: dict[str, tuple[float, float, float, float]] = {
     # el marco labrado es parte de la pieza; lo que sobra es el vidrio suelto
     # sobre la mesa, a la derecha
     "_Ventana 2_ óleo y vitraux.jpg": (0.025, 0.02, 0.80, 0.975),
+    # misma mesa y mismos vidrios sueltos que Ventana 2, mas la marca de agua
+    # abajo. La pieza esta ladeada, asi que por arriba y a la derecha entra un
+    # filo de mesa que no se puede sacar sin comerse el marco.
+    "Ventana 1, óleo y vitraux.jpg": (0.038, 0.034, 0.760, 0.945),
     "Serie_ _Paisaje Urbano_, óleo,30x30cm.jpg": (0.155, 0.175, 0.855, 0.865),
     "Serie_Paisaje Urbano_ óleo, 0x30cm.jpg": (0.13, 0.13, 0.85, 0.88),
     "Serie_Paisaje Urbano_ óleo, 30x30cm.jpg": (0.10, 0.10, 0.90, 0.86),
