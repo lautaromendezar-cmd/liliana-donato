@@ -16,7 +16,7 @@ export const NOMBRE = "Liliana Donato";
 export const STATEMENT =
   "Acuarela y óleo. Trabajo con el agua más que contra ella: dejo que el color se abra en el papel y me quedo con lo que la transparencia decide.";
 
-export const UBICACION = "Pintora · Buenos Aires, Argentina";
+export const UBICACION = "Artista visual · Buenos Aires, Argentina";
 
 export const MARCA = "Liliana Donato · Arte";
 

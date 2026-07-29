@@ -6,9 +6,9 @@ import { display, meta } from "./tipografia";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Liliana Donato — Pintora",
+  title: "Liliana Donato — Artista visual",
   description:
-    "Acuarela y óleo. Obra de Liliana Donato, pintora argentina radicada en Buenos Aires.",
+    "Acuarela y óleo. Obra de Liliana Donato, artista visual argentina radicada en Buenos Aires.",
   authors: [{ name: "Liliana Donato" }],
 };
 
