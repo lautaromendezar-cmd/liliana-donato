@@ -5,10 +5,11 @@
  * sacar la frase que encabezaba la pagina y dejar solo la invitacion a
  * escribirle, que pasa a ser el unico texto grande.
  *
- * OJO: el telefono sigue sin confirmar. Salio de las tarjetas que se ven en la
- * foto de "Primaveral" (contenido/Obras/Acuarelas), asi que es un dato que
- * ella ya reparte impreso, pero fue leido de una foto. No hay email porque su
- * tarjeta no lo trae.
+ * No hay telefono ni email. Habia un WhatsApp, pero el numero se habia leido
+ * de las tarjetas que se ven en la foto de "Primaveral"
+ * (contenido/Obras/Acuarelas) y ella nunca lo confirmo; el Instagram salio de
+ * la misma foto y resulto mal escrito, asi que el numero se saca hasta que lo
+ * confirme. No reponerlo desde esa foto.
  */
 
 import medidasManchas from "./manchas.json";
@@ -23,11 +24,6 @@ export const INVITACION = {
 export const FIRMA = "Liliana Donato";
 
 export const CANALES = [
-  {
-    rotulo: "WhatsApp",
-    valor: "+54 9 11 5560-4252",
-    href: "https://wa.me/5491155604252",
-  },
   {
     rotulo: "Instagram",
     valor: "@lilidonatoarte",
