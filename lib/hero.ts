@@ -28,7 +28,7 @@ export const MARCA = "Liliana Donato · Arte";
  */
 export const TREBOL = {
   src: "/marca/trebol.webp",
-  ...medidasTrebol,
+  ...medidasTrebol.trebol,
 } as const;
 
 export const NAVEGACION = [

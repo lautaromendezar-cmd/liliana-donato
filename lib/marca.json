@@ -1,4 +1,10 @@
 {
-  "ancho": 420,
-  "alto": 512
+  "trebol": {
+    "ancho": 420,
+    "alto": 512
+  },
+  "sello": {
+    "ancho": 640,
+    "alto": 566
+  }
 }

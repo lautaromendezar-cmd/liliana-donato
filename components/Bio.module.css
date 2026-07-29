@@ -236,6 +236,21 @@
   margin-top: clamp(4rem, 12vh, 9rem);
 }
 
+/*
+  El sello cierra la pagina. Va centrado y solo, con bastante aire arriba: es
+  el punto final del relato, no una firma al pie de un parrafo.
+*/
+.sello {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(4.5rem, 13vh, 10rem);
+}
+
+.selloImagen {
+  width: clamp(7rem, 13vw, 10.5rem);
+  height: auto;
+}
+
 /* --- movil --------------------------------------------------------------- */
 
 @media (max-width: 48rem) {

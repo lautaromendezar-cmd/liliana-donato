@@ -8,6 +8,7 @@
  */
 
 import fotos from "./fotos.json";
+import medidasMarca from "./marca.json";
 import medidasManchas from "./manchas.json";
 
 /**
@@ -49,6 +50,20 @@ export const CIERRE = {
   texto:
     "En estos últimos años, mis pinturas comenzaron a cobrar nuevas formas al transformarse en objetos que acompañan la vida cotidiana como almohadones, mantelería, cuadernos, tazas, agendas, y más, permitiendo que el arte trascienda el lienzo y forme parte de diferentes espacios.",
 };
+
+/**
+ * El sello de Liliana, que cierra la pagina.
+ *
+ * Va aca y no en contacto, que era donde parecia ir. Sus letras son verde
+ * bosque: dan 5.44:1 sobre el crema y 2.50:1 sobre el verde oscuro de
+ * contacto, donde el nombre directamente se borra. El dorado y el trebol si
+ * se lucen sobre el verde, pero un sello del que no se lee el nombre no es un
+ * sello. Lo genera scripts/marca.py.
+ */
+export const SELLO = {
+  src: "/marca/sello.webp",
+  ...medidasMarca.sello,
+} as const;
 
 /**
  * Estas fotos no son decorativas: son contenido, y llevan alt de verdad.

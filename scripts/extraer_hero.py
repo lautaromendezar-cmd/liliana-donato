@@ -166,24 +166,6 @@ def agrandar(im: Image.Image, min_lado: int) -> Image.Image:
     return im.resize((round(im.width * e), round(im.height * e)), Image.LANCZOS)
 
 
-def icono(arr: np.ndarray, destino: str, lado: int = 256) -> None:
-    """Favicon: una flor de la pintura sobre el papel del sitio."""
-    piezas = buscar_petalos(arr, [1])
-    if not piezas:
-        return
-    flor = a_imagen(recortar(piezas[0]), lado)
-    lienzo = Image.new(
-        "RGBA", (lado, lado),
-        tuple(np.clip(PAPEL * 255 + 0.5, 0, 255).astype(int)) + (255,))
-    e = (lado * 0.76) / max(flor.size)
-    flor = flor.resize((max(1, round(flor.width * e)),
-                        max(1, round(flor.height * e))), Image.LANCZOS)
-    lienzo.alpha_composite(flor, ((lado - flor.width) // 2,
-                                  (lado - flor.height) // 2))
-    os.makedirs(os.path.dirname(destino), exist_ok=True)
-    lienzo.convert("RGB").save(destino)
-
-
 def buscar_petalos(arr: np.ndarray, seleccion):
     """Componentes chicas, magentas y sueltas: los petalos ya caidos.
 
@@ -309,7 +291,9 @@ def main():
         piezas.append((nombre, im))
         print("%-16s %4d x %4d" % (nombre, im.width, im.height))
 
-    icono(arr, os.path.join(RAIZ, "app", "icon.png"))
+    # El favicon ya no sale de aca. Lo escribe scripts/marca.py con el trebol
+    # del logo: desde que hay marca, una flor del hero competia con ella. Si
+    # este script volviera a escribir app/icon.png, la pisaria.
     escribir_manifiesto(
         {n: {"ancho": im.width, "alto": im.height} for n, im in piezas})
 

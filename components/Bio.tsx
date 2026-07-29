@@ -21,6 +21,7 @@ import {
   PROPOSITO,
   RETRATO,
   SALUDO,
+  SELLO,
 } from "@/lib/bio";
 import { useConsulta } from "@/lib/useConsulta";
 import { useModo } from "@/lib/usePuntero";
@@ -154,6 +155,20 @@ export function Bio() {
           <Revelar className={estilos.cierre}>
             <h3 className={estilos.rotulo}>{CIERRE.rotulo}</h3>
             <p className={estilos.parrafo}>{CIERRE.texto}</p>
+          </Revelar>
+
+          {/* Sin alt: el sello dice "Liliana Donato / Arte", que es lo que la
+              pagina entera viene diciendo. Leerlo de nuevo al final no le
+              suma nada a quien escucha. */}
+          <Revelar demora={0.1} className={estilos.sello}>
+            <Image
+              src={SELLO.src}
+              alt=""
+              width={SELLO.ancho}
+              height={SELLO.alto}
+              sizes="12rem"
+              className={estilos.selloImagen}
+            />
           </Revelar>
         </div>
       </article>
