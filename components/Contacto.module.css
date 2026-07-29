@@ -72,28 +72,25 @@
   que la tipografia alcanza.
 */
 /*
-  El bloque mide lo que mide la fila mas ancha y se centra entero. Centrar
-  cada fila por separado (align-items: center) hacia que la costura entre
-  rotulo y valor cayera en un lugar distinto por fila y la lista se viera
-  desalineada.
+  Rotulo arriba y valor debajo, los dos sobre el eje de la pagina. Es la
+  tercera forma que prueba esta lista: en fila y centrada por renglon, las
+  costuras entre rotulo y valor quedaban desparejas; en dos columnas
+  compartidas, los valores cortos dejaban el lado derecho vacio y el bloque
+  entero se sentia corrido a la izquierda. Apilado no hay costura que
+  desalinear ni masa que descentrar.
 */
 .canales {
   display: flex;
   flex-direction: column;
-  gap: clamp(0.75rem, 1.6vh, 1.25rem);
-  width: max-content;
-  max-width: 100%;
-  margin-inline: auto;
+  gap: clamp(1.4rem, 3.2vh, 2.25rem);
+  align-items: center;
 }
 
-/* dos columnas fijas, compartidas por todas las filas: los rotulos rematan
-   todos contra la misma costura y los valores arrancan todos juntos */
 .canal {
   display: grid;
-  grid-template-columns: 7rem 1fr;
-  gap: 1rem;
-  align-items: baseline;
-  text-align: left;
+  justify-items: center;
+  gap: 0.4rem;
+  text-align: center;
   transition: color var(--dur-corta) var(--curva);
   color: var(--tinta-suave);
 }
@@ -109,8 +106,10 @@
   font-weight: 500;
   letter-spacing: var(--track-meta);
   text-transform: uppercase;
-  text-align: right;
   color: var(--tinta-suave);
+  /* el tracking cuelga un espacio tras la ultima letra; sin esto el rotulo
+     queda opticamente corrido a la izquierda, igual que en .firma */
+  margin-right: calc(var(--track-meta) * -1);
 }
 
 .valor {
