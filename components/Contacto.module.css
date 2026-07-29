@@ -71,15 +71,23 @@
   control de interfaz; esto es una direccion, y el sitio entero se sostiene en
   que la tipografia alcanza.
 */
+/*
+  El bloque mide lo que mide la fila mas ancha y se centra entero. Centrar
+  cada fila por separado (align-items: center) hacia que la costura entre
+  rotulo y valor cayera en un lugar distinto por fila y la lista se viera
+  desalineada.
+*/
 .canales {
   display: flex;
   flex-direction: column;
   gap: clamp(0.75rem, 1.6vh, 1.25rem);
-  align-items: center;
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
 }
 
-/* dos columnas fijas: si el rotulo y el valor se centran como un bloque, cada
-   fila arranca en un lugar distinto y la lista se ve desprolija */
+/* dos columnas fijas, compartidas por todas las filas: los rotulos rematan
+   todos contra la misma costura y los valores arrancan todos juntos */
 .canal {
   display: grid;
   grid-template-columns: 7rem 1fr;
