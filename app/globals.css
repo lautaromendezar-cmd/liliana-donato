@@ -52,6 +52,17 @@ body {
   overflow-x: hidden;
 }
 
+/*
+  Con el menu de telefono abierto, el fondo no scrollea. Va por un atributo que
+  pone la navegacion en el html, y la regla vive aca y no en su modulo porque
+  CSS Modules no admite un selector sin ninguna clase propia. Tocar body.style
+  desde JavaScript, que seria la otra salida, se pelearia con el overflow-x de
+  arriba, que el hero necesita.
+*/
+html[data-menu="abierto"] body {
+  overflow: hidden;
+}
+
 img {
   display: block;
   max-width: 100%;

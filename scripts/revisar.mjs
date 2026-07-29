@@ -71,12 +71,21 @@ const MEDIR = `(() => {
   };
 
   const h1 = document.querySelector('h1');
+
+  // En telefono el <nav> es el panel del menu: position:fixed y del alto de la
+  // pantalla entera. Medir SU caja daria que todo el follaje lo invade, que es
+  // falso -esta oculto- y ademas taparia invasiones de verdad. Ahi lo que vive
+  // en la barra es el boton, y eso es lo que hay que proteger.
+  const menu = document.querySelector('header nav');
+  const enLaBarra = menu && getComputedStyle(menu).position !== 'fixed';
+  const boton = document.querySelector('header button');
+
   const zonas = {
     nombre: caja(h1),
     statement: caja(h1.nextElementSibling),
     ubicacion: caja(h1.nextElementSibling.nextElementSibling),
     marca: caja(document.querySelector('header a')),
-    nav: caja(document.querySelector('header nav')),
+    ...(enLaBarra ? { nav: caja(menu) } : { boton: caja(boton) }),
   };
 
   const aire = ${AIRE};
@@ -123,7 +132,12 @@ const MEDIR = `(() => {
     ['statement', h1.nextElementSibling],
     ['ubicacion', h1.nextElementSibling.nextElementSibling],
     ['marca', document.querySelector('header a')],
-    ...[...document.querySelectorAll('header nav a')].map((a, i) => ['nav ' + i, a]),
+    // los del menu solo cuando se ven: con el panel cerrado heredan
+    // visibility:hidden y medirles el contraste seria medir contra un fondo
+    // que nadie tiene delante
+    ...[...document.querySelectorAll('header nav a')]
+      .filter((a) => getComputedStyle(a).visibility !== 'hidden')
+      .map((a, i) => ['nav ' + i, a]),
   ];
   for (const [n, el] of aEvaluar) {
     if (!el) continue;

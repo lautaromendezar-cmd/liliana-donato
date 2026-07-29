@@ -1,7 +1,14 @@
 /*
-  Sin recuadros, sin botones, sin desplegables. La navegacion es una linea de
-  texto a cada lado y nada mas; lo unico que pasa al hover es que el color se
-  acerca a la tinta, despacio.
+  Sin recuadros y sin botones: la navegacion es una linea de texto a cada lado
+  y nada mas; lo unico que pasa al hover es que el color se acerca a la tinta,
+  despacio.
+
+  En telefono hay una excepcion, y esta medida. Las cinco secciones necesitan
+  386 px y en una pantalla de 360 px hay 320: faltan 66, un 17% que no se puede
+  recortar porque --tam-meta no baja de 12 px -ahi vive la ficha tecnica y el
+  publico que compra obra es mayormente gente grande-. El menu plano se partia
+  en dos lineas y "CONTACTO" caia debajo del nombre de Liliana, pegado. Ella
+  pidio separarlos. De ahi el boton.
 */
 
 .barra {
@@ -11,14 +18,41 @@
   left: 0;
   right: 0;
   display: flex;
-  /* centrado y no baseline: la marca ahora tiene una imagen adentro, y una
-     imagen no aporta linea base, asi que alinear por ella descolgaba el menu */
+  /* centrado y no baseline: la marca tiene una imagen adentro, y una imagen no
+     aporta linea base, asi que alinear por ella descolgaba el menu */
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
   padding: clamp(1.5rem, 3vw, 2.5rem) var(--margen-borde);
+}
+
+/*
+  La entrada NO va en la barra. Anima transform, y un ancestro con transform se
+  vuelve bloque contenedor de los position:fixed que cuelgan de el: el panel de
+  telefono dejaba de medirse contra la pantalla y se media contra la barra, que
+  tiene noventa pixeles de alto. Se anima cada mitad por separado y la barra
+  queda limpia.
+*/
+.fila,
+.lista {
   opacity: 0;
   animation: bajar var(--dur-larga) var(--curva) 200ms both;
+}
+
+/*
+  Por encima del panel: la animacion de entrada le da a .fila su propio
+  contexto de apilado, asi que el z-index de la marca y del boton se resuelve
+  aca adentro y no contra el panel. Sin esto, con el menu abierto el boton de
+  cerrar queda tapado y solo se sale con Escape.
+*/
+.fila {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
 }
 
 /*
@@ -53,7 +87,6 @@
     transition: none;
   }
 }
-
 
 @keyframes bajar {
   from {
@@ -124,6 +157,8 @@
   sobrevive al tamano de una barra.
 */
 .marca {
+  position: relative;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   gap: 0.45em;
@@ -139,23 +174,161 @@
   width: auto;
 }
 
+/* --- el boton, que solo existe en telefono ------------------------------- */
+
+/*
+  Sin caja. Un boton trae borde, fondo y relleno propios del navegador, y aca
+  se veria como el unico recuadro del sitio, justo arriba a la derecha.
+*/
+.boton {
+  display: none;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
+}
+
+.trazos {
+  position: relative;
+  display: block;
+  width: 1.5rem;
+  height: 1px;
+  background: currentColor;
+  transition: background-color var(--dur-corta) var(--curva);
+}
+
+.trazos::before,
+.trazos::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transition: transform var(--dur-corta) var(--curva);
+}
+
+.trazos::before {
+  transform: translateY(-0.4rem);
+}
+
+.trazos::after {
+  transform: translateY(0.4rem);
+}
+
+/*
+  Abierto: el trazo del medio se apaga y los otros dos se cruzan. El del medio
+  se apaga por color y no por opacidad: la opacidad de un elemento arrastra a
+  sus pseudo-elementos, y apagaria tambien las dos lineas que forman la cruz.
+*/
+.barra[data-abierto] .trazos {
+  background: transparent;
+}
+
+.barra[data-abierto] .trazos::before {
+  transform: translateY(0) rotate(45deg);
+}
+
+.barra[data-abierto] .trazos::after {
+  transform: translateY(0) rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trazos,
+  .trazos::before,
+  .trazos::after {
+    transition: none;
+  }
+}
+
+/* --- foco visible, que sin caja hay que dibujarlo a mano ------------------ */
+
+.boton:focus-visible,
+.marca:focus-visible {
+  outline: 1px solid var(--tinta);
+  outline-offset: 0.35rem;
+}
+
+/* --- telefono ------------------------------------------------------------ */
+
 @media (max-width: 40rem) {
-  .barra {
-    flex-direction: column;
-    /* en columna, align-items pasa a ser el eje horizontal: centrar aca
-       arrastraria la marca y el menu al medio de la pantalla */
-    align-items: flex-start;
-    gap: 0.9rem;
+  .boton {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    /* el area tactil se pasa del margen a proposito; el trazo queda alineado */
+    margin-right: -0.75rem;
+    color: var(--tinta);
+    cursor: pointer;
+  }
+
+  /*
+    El panel. Ocupa la pantalla entera y no un desplegable colgado de la barra:
+    a este ancho un desplegable seria una caja flotando sobre la pintura, y
+    todo el sitio se sostiene en que no hay cajas.
+  */
+  .panel {
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    display: grid;
+    align-content: center;
+    padding: var(--carril-nav) var(--margen-borde) clamp(3rem, 10vh, 6rem);
+    background: var(--papel);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--dur-corta) var(--curva),
+      visibility 0s linear var(--dur-corta);
+  }
+
+  .barra[data-abierto] .panel {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity var(--dur-corta) var(--curva);
   }
 
   .lista {
-    justify-content: flex-start;
-    gap: 0.9rem 1.1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(1rem, 3.5vh, 1.75rem);
+  }
+
+  /*
+    En el panel los rotulos dejan de ser metadatos y pasan a ser el contenido
+    de la pantalla, asi que van en la serif y grandes, como los titulos de
+    seccion. En caja alta y a 12 px, cinco lineas sueltas se leerian como una
+    lista de sistema.
+  */
+  .panel .enlace {
+    font-family: var(--familia-display);
+    font-size: clamp(2rem, 9vw, 2.75rem);
+    font-weight: 400;
+    letter-spacing: var(--track-nombre);
+    line-height: 1.1;
+    text-transform: none;
+    color: var(--tinta);
+  }
+
+  .panel .enlace[aria-current="page"]::before {
+    left: -0.6em;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .barra {
+  .panel {
+    transition: visibility 0s linear var(--dur-corta);
+  }
+
+  .barra[data-abierto] .panel {
+    transition: none;
+  }
+
+  .fila,
+  .lista {
     animation: aparecer var(--dur-media) var(--curva) both;
   }
 
