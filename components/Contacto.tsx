@@ -3,13 +3,7 @@
 import Image from "next/image";
 import { MotionConfig } from "motion/react";
 
-import {
-  CANALES,
-  FIRMA,
-  INVITACION,
-  MANCHAS,
-  TITULO,
-} from "@/lib/contacto";
+import { CANALES, FIRMA, INVITACION, MANCHAS } from "@/lib/contacto";
 
 import { Revelar } from "./Revelar";
 import estilos from "./Contacto.module.css";
@@ -35,19 +29,20 @@ export function Contacto() {
         </div>
 
         <div className={estilos.centro}>
+          {/*
+            La invitacion es el h1: Liliana pidio sacar la frase que iba
+            arriba, y si esto quedara como un simple parrafo la pagina se
+            publicaria sin encabezado.
+          */}
           <Revelar>
-            <h1 className={estilos.titulo}>
-              {TITULO.antes}
-              <em className={estilos.enfasis}>{TITULO.enfasis}</em>
-              {TITULO.despues}
+            <h1 className={estilos.invitacion}>
+              {INVITACION.antes}
+              <em className={estilos.enfasis}>{INVITACION.enfasis}</em>
+              {INVITACION.despues}
             </h1>
           </Revelar>
 
-          <Revelar demora={0.12}>
-            <p className={estilos.invitacion}>{INVITACION}</p>
-          </Revelar>
-
-          <Revelar demora={0.22}>
+          <Revelar demora={0.14}>
             <p className={estilos.firma}>{FIRMA}</p>
             <ul className={estilos.canales}>
               {CANALES.map((c) => (

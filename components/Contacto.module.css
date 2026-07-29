@@ -34,12 +34,18 @@
   text-align: center;
 }
 
-.titulo {
-  margin: 0;
+/*
+  Unico texto grande de la pagina. Va bastante mas chico que un titulo de
+  seccion porque no es una sentencia de cuatro palabras sino una frase larga:
+  al tamano de titulo se comia la pantalla y llegaba pegada a los canales.
+*/
+.invitacion {
+  max-width: 22ch;
+  margin: 0 auto;
   font-family: var(--familia-display);
-  font-size: clamp(2.5rem, 6.4vw, 5.5rem);
+  font-size: clamp(1.9rem, 4.2vw, 3.4rem);
   font-weight: 400;
-  line-height: 1.02;
+  line-height: 1.14;
   letter-spacing: var(--track-nombre);
   color: var(--tinta);
   text-wrap: balance;
@@ -47,16 +53,6 @@
 
 .enfasis {
   font-style: italic;
-}
-
-.invitacion {
-  max-width: 40ch;
-  margin: clamp(1.75rem, 3.4vw, 2.75rem) auto 0;
-  font-family: var(--familia-display);
-  font-size: var(--tam-statement);
-  line-height: var(--alto-statement);
-  color: var(--tinta-suave);
-  text-wrap: pretty;
 }
 
 .firma {
