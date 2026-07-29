@@ -14,8 +14,17 @@ const medidasDe = (id: IdRecorte) => recortes[id];
 
 export const NOMBRE = "Liliana Donato";
 
+/**
+ * La frase de la portada es de ella. La anterior la habia escrito yo, y no
+ * salia de ninguno de los textos que mando: hablaba con su voz sin ser suya.
+ *
+ * Esta ya la habia mandado en contenido/Textos/GALERIA.docx -"cada obra es
+ * unica pensada para transmitir sentimientos de calma y armonia", para poner
+ * antes del catalogo de fotos- y nunca se habia usado. La reescribio y pidio
+ * que fuera aca. Va tal cual, con el punto final como unico agregado.
+ */
 export const STATEMENT =
-  "Acuarela y óleo. Trabajo con el agua más que contra ella: dejo que el color se abra en el papel y me quedo con lo que la transparencia decide.";
+  "Cada obra es única, combina contrastes, transparencias, sentimientos y armonía.";
 
 export const UBICACION = "Artista visual · Buenos Aires, Argentina";
 
