@@ -13,7 +13,7 @@ import estilos from "./Navegacion.module.css";
 const UMBRAL = 24;
 
 /** El mismo corte que usa el CSS para pasar al menu de telefono. */
-const ANCHO_ESCRITORIO = "(min-width: 40.0625rem)";
+const ANCHO_ESCRITORIO = "(min-width: 64.0625rem)";
 
 export function Navegacion() {
   const ruta = usePathname();

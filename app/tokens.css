@@ -103,11 +103,15 @@
 }
 
 /*
-  Debajo de 40rem la marca y el menu no entran en una linea y la barra pasa a
-  dos filas. El carril tiene que crecer con ella: si queda corto, los enlaces
-  sobresalen justo por donde pasa el contenido.
+  Debajo de 64rem el menu se guarda detras del boton (ver Navegacion.module.css)
+  y la barra queda con la marca y ese boton. El carril tiene que cubrirlos: si
+  queda corto, lo que sobresale cae justo por donde pasa el contenido.
+
+  Sigue siendo un valor fijo y no una formula: medido en el hero, el pie de la
+  barra queda en 68 px a 640 de ancho y en 75 a 1024 -el boton mide 2.75rem y
+  lo que crece es el padding-, asi que estos 100 alcanzan en todo el rango.
 */
-@media (max-width: 40rem) {
+@media (max-width: 64rem) {
   :root {
     --carril-nav: 6.25rem;
   }

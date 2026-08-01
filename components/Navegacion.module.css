@@ -3,12 +3,19 @@
   y nada mas; lo unico que pasa al hover es que el color se acerca a la tinta,
   despacio.
 
-  En telefono hay una excepcion, y esta medida. Las cinco secciones necesitan
-  386 px y en una pantalla de 360 px hay 320: faltan 66, un 17% que no se puede
-  recortar porque --tam-meta no baja de 12 px -ahi vive la ficha tecnica y el
-  publico que compra obra es mayormente gente grande-. El menu plano se partia
-  en dos lineas y "CONTACTO" caia debajo del nombre de Liliana, pegado. Ella
-  pidio separarlos. De ahi el boton.
+  Debajo de cierto ancho hay una excepcion, y esta medida. Los rotulos no se
+  pueden achicar: --tam-meta no baja de 12 px -ahi vive la ficha tecnica y el
+  publico que compra obra es mayormente gente grande-. Cuando no entran, el
+  menu plano se parte en dos lineas y "CONTACTO" cae debajo del nombre de
+  Liliana, pegado. Ella pidio separarlos. De ahi el boton.
+
+  El corte esta en 64rem y no en 40rem, que es donde estaba con seis secciones.
+  Con "Exposiciones" el menu pasa de 527 a 675 px de ancho natural, y lo que se
+  rompe primero no es el menu sino la marca: el flex la aprieta antes de partir
+  la lista. Medido en el hero, a 900 px "Liliana Donato · Arte" ya cae en dos
+  lineas y a 768 en tres. A 1024 el menu entra con 75 px de sobra y la marca
+  queda entera; abajo de eso, panel. (Lo mismo pasaba con seis secciones entre
+  641 y 700 px, solo que ahi nadie lo estaba mirando.)
 */
 
 .barra {
@@ -162,6 +169,15 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45em;
+  /*
+    No se comprime. Es un flex item, y sin esto el navegador prefiere partirle
+    el nombre en varias lineas antes que dejar que el menu de al lado se parta:
+    el sintoma es "Liliana / Donato · / Arte" apilado arriba a la izquierda.
+    Fijandolo, si algun dia no entra, lo que cede es el menu -que ya tiene su
+    panel- y no el nombre de ella.
+  */
+  flex-shrink: 0;
+  white-space: nowrap;
   font-family: var(--familia-display);
   font-size: clamp(1.05rem, 0.85rem + 0.75vw, 1.5rem);
   line-height: 1;
@@ -250,9 +266,9 @@
   outline-offset: 0.35rem;
 }
 
-/* --- telefono ------------------------------------------------------------ */
+/* --- telefono y tableta --------------------------------------------------- */
 
-@media (max-width: 40rem) {
+@media (max-width: 64rem) {
   .boton {
     position: relative;
     z-index: 2;
@@ -300,7 +316,7 @@
   /*
     En el panel los rotulos dejan de ser metadatos y pasan a ser el contenido
     de la pantalla, asi que van en la serif y grandes, como los titulos de
-    seccion. En caja alta y a 12 px, cinco lineas sueltas se leerian como una
+    seccion. En caja alta y a 12 px, siete lineas sueltas se leerian como una
     lista de sistema.
   */
   .panel .enlace {

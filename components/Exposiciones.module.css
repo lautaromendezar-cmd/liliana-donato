@@ -1,0 +1,250 @@
+/*
+  Un índice, no una galería. Acá no hay imágenes: lo único que puede ordenar
+  veintitrés líneas es la tipografía y el aire, así que el año va grande en la
+  serif y contra el eje, y la sede arranca del otro lado. Ese eje es lo que
+  hace la columna; no hay ninguna línea dibujada.
+*/
+
+.pagina {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: calc(var(--carril-nav) + clamp(4rem, 14vh, 9rem)) var(--margen-borde)
+    clamp(6rem, 16vh, 12rem);
+}
+
+/* --- encabezado ---------------------------------------------------------- */
+
+/*
+  Mismo encabezado que las galerías: título en la serif con el revelado por
+  máscara, bajada en bastardilla y una línea de datos abajo. Es la firma de una
+  página de sección del sitio; cambiarla acá haría que esta pareciera de otro
+  lado.
+*/
+.encabezado {
+  max-width: 40rem;
+  margin-bottom: clamp(4rem, 14vh, 10rem);
+}
+
+.titulo {
+  margin: 0;
+  font-family: var(--familia-display);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: var(--track-nombre);
+  color: var(--tinta);
+
+  -webkit-mask-image: linear-gradient(
+    96deg,
+    transparent 0%,
+    transparent 38%,
+    #000 62%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    96deg,
+    transparent 0%,
+    transparent 38%,
+    #000 62%,
+    #000 100%
+  );
+  -webkit-mask-size: 260% 100%;
+  mask-size: 260% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: 0% 0;
+  mask-position: 0% 0;
+  animation: revelar var(--dur-revelado) var(--curva-suave) 220ms both;
+}
+
+@keyframes revelar {
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
+}
+
+.bajada {
+  max-width: 32ch;
+  margin: clamp(1.25rem, 2.4vw, 2rem) 0 0;
+  font-family: var(--familia-display);
+  font-style: italic;
+  font-size: var(--tam-statement);
+  line-height: var(--alto-statement);
+  color: var(--tinta-suave);
+  text-wrap: pretty;
+  opacity: 0;
+  animation: subir var(--dur-larga) var(--curva) 700ms both;
+}
+
+.cuenta {
+  margin: clamp(1.5rem, 3vh, 2.25rem) 0 0;
+  font-family: var(--familia-meta);
+  font-size: var(--tam-meta);
+  font-weight: 500;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  /* el tracking del último carácter empuja el borde derecho */
+  margin-right: calc(var(--track-meta) * -1);
+  opacity: 0;
+  animation: subir var(--dur-larga) var(--curva) 900ms both;
+}
+
+@keyframes subir {
+  from {
+    transform: translate3d(0, 0.6rem, 0);
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* --- la cronología -------------------------------------------------------- */
+
+/*
+  Corrida a la derecha, igual que las fichas de la bio: el encabezado pesa a la
+  izquierda y esto lo contrapesa sin volver a centrar la página. Con todo
+  alineado al mismo margen la sección quedaría como una hoja de currículum.
+*/
+.cronologia {
+  width: min(100%, 58rem);
+  margin-left: auto;
+  display: grid;
+  row-gap: clamp(3rem, 8vh, 5.5rem);
+}
+
+/*
+  Dos columnas y sin align-items: la celda del año tiene que estirarse hasta el
+  alto del tramo, que es el recorrido que después usa el sticky. Con
+  align-items:start mediría lo que mide el número y no habría por dónde pegarse.
+*/
+.tramo {
+  display: grid;
+  grid-template-columns: clamp(5rem, 11vw, 10.5rem) minmax(0, 1fr);
+  column-gap: clamp(1.25rem, 3vw, 2.75rem);
+}
+
+.anio {
+  position: sticky;
+  /* debajo del carril de la navegación: ahí el papel es liso y el número no se
+     cruza con el menú */
+  top: calc(var(--carril-nav) + clamp(0.75rem, 3vh, 2rem));
+  margin: 0;
+  font-family: var(--familia-display);
+  /*
+    Grande de verdad. En una página sin una sola imagen los años son lo único
+    que puede hacer de materia: chicos, la sección quedaba en una lista tibia
+    flotando en el medio de la hoja.
+  */
+  font-size: clamp(2rem, 4.4vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: var(--track-nombre);
+  /*
+    Tenue y no tinta: el año es la referencia, no el contenido. Da 3.63:1 sobre
+    el papel, y como nunca baja de 28 px cuenta como texto grande, donde AA pide
+    3:1. Con --tam-meta el mismo color no pasaría; por eso en la navegación se
+    usa el suave.
+  */
+  color: var(--tinta-tenue);
+  text-align: right;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.muestras {
+  display: grid;
+  /* bastante menos que el hueco entre años: esa diferencia es la que agrupa */
+  row-gap: clamp(1.75rem, 4vh, 2.75rem);
+}
+
+.sede {
+  margin: 0;
+  font-family: var(--familia-display);
+  font-size: clamp(1.3125rem, 2.1vw, 2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--tinta);
+  text-wrap: pretty;
+}
+
+.muestra {
+  margin: 0.35rem 0 0;
+  font-family: var(--familia-display);
+  font-style: italic;
+  font-size: var(--tam-statement);
+  line-height: 1.4;
+  color: var(--tinta-suave);
+  text-wrap: pretty;
+}
+
+.tipo {
+  margin: 0.7rem 0 0;
+  font-family: var(--familia-meta);
+  font-size: var(--tam-meta);
+  font-weight: 500;
+  letter-spacing: var(--track-meta);
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+}
+
+/* el mismo punto que marca la obra vendida y la página actual */
+.tipo[data-sola] {
+  position: relative;
+  padding-left: 0.85em;
+}
+
+.tipo[data-sola]::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0.3em;
+  height: 0.3em;
+  margin-top: -0.15em;
+  border-radius: 50%;
+  background: var(--magenta);
+}
+
+/* --- movil ---------------------------------------------------------------- */
+
+/*
+  A este ancho las dos columnas dejan de servir: el año se come una franja que
+  la sede necesita, y "RG en el arte, Galería Internacional" se parte en cuatro
+  líneas. El año pasa arriba, alineado con su grupo, y deja de pegarse: en una
+  pantalla de teléfono un número flotando sobre el texto es un estorbo.
+*/
+@media (max-width: 48rem) {
+  .tramo {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: clamp(1rem, 3vh, 1.5rem);
+  }
+
+  .anio {
+    position: static;
+    text-align: left;
+  }
+}
+
+/* --- sin movimiento ------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .titulo {
+    -webkit-mask-image: none;
+    mask-image: none;
+    animation: aparecer var(--dur-media) var(--curva) both;
+  }
+
+  .bajada,
+  .cuenta {
+    transform: none;
+    animation: aparecer var(--dur-media) var(--curva) 150ms both;
+  }
+
+  @keyframes aparecer {
+    to {
+      opacity: 1;
+    }
+  }
+}
